@@ -1,0 +1,22 @@
+<script id="foxxActiveView.ejs" type="text/template">
+  <div class="paddingBox">
+    <div class="borderBox"></div>
+    <img src="<%= model.thumbnailUrl %>" height="50" width="50" alt="Icon for Service" class="icon">
+    <% if(model.isDevelopment()) { %>
+      <div class="tileBadge">
+        <span>
+          <div class="corneredBadge development">
+            development
+          </div>
+        </span>
+      </div>
+    <% } %>
+    <h5 class="collectionName">
+      <%= model.get("mount") %>
+       
+      <% if(model.get("name")) { %>
+        (<%= model.get("name") %>)
+      <% } %>
+    </h5>
+  </div>
+</script>

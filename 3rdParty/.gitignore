@@ -1,0 +1,13 @@
+*.ao
+*.d
+*.1
+*.8
+*.pc
+
+libev/.libs/
+libev/config.h
+libev/ev.lo
+libev/event.lo
+libev/libev.la
+libev/libtool
+libev/stamp-h1

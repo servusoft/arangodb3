@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+#DEBHELPER#
+
+echo "
+ArangoDB 3 (http://www.arangodb.org)
+  A multi-purpose open-source database with a flexible data model for documents,
+  graphs, and key-values.
+
+First Steps with ArangoDB:
+  http:/www.arangodb.org/quickstart
+
+Configuration file:
+  /etc/arangodb3/arangod.conf
+
+Start ArangoDB shell client:
+  > /usr/bin/arangosh
+
+Start ArangoDB service:
+  > /etc/init.d/arangodb3 start
+"
+

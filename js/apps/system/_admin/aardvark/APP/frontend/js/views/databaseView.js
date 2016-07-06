@@ -1,0 +1,449 @@
+/*jshint browser: true */
+/*jshint unused: false */
+/*global window, document, Backbone, EJS, SwaggerUi, hljs, $, arangoHelper, templateEngine, Joi*/
+(function() {
+
+  "use strict";
+
+  window.databaseView = Backbone.View.extend({
+    users: null,
+    el: '#content',
+
+    template: templateEngine.createTemplate("databaseView.ejs"),
+
+    dropdownVisible: false,
+
+    currentDB: "",
+
+    events: {
+      "click #createDatabase"           : "createDatabase",
+      "click #submitCreateDatabase"     : "submitCreateDatabase",
+      "click .editDatabase"             : "editDatabase",
+      "click #userManagementView .icon" : "editDatabase",
+      "click #selectDatabase"           : "updateDatabase",
+      "click #submitDeleteDatabase"     : "submitDeleteDatabase",
+      "click .contentRowInactive a"     : "changeDatabase",
+      "keyup #databaseSearchInput"      : "search",
+      "click #databaseSearchSubmit"     : "search",
+      "click #databaseToggle"           : "toggleSettingsDropdown",
+      "click .css-label"                : "checkBoxes",
+      "click #dbSortDesc"               : "sorting"
+    },
+
+    sorting: function() {
+      if ($('#dbSortDesc').is(":checked")) {
+        this.collection.setSortingDesc(true);
+      }
+      else {
+        this.collection.setSortingDesc(false);
+      }
+
+      if ($('#databaseDropdown').is(":visible")) {
+        this.dropdownVisible = true;
+      } else {
+        this.dropdownVisible = false;
+      }
+
+      this.render();
+    },
+
+    initialize: function() {
+      this.collection.fetch({
+        async: true,
+        cache: false
+      });
+    },
+      
+    checkBoxes: function (e) {
+      //chrome bugfix
+      var clicked = e.currentTarget.id;
+      $('#'+clicked).click();
+    },
+
+    render: function() {
+
+      var callback = function(error, db) {
+        if (error) {
+          arangoHelper.arangoError("DB","Could not get current db properties");
+        }
+        else {
+          this.currentDB = db;
+          //sorting
+          this.collection.sort();
+
+          $(this.el).html(this.template.render({
+            collection   : this.collection,
+            searchString : '',
+            currentDB    : this.currentDB
+          }));
+          
+          if (this.dropdownVisible === true) {
+            $('#dbSortDesc').attr('checked', this.collection.sortOptions.desc);
+            $('#databaseToggle').toggleClass('activated');
+            $('#databaseDropdown2').show();
+          }
+          
+          arangoHelper.setCheckboxStatus("#databaseDropdown");
+
+          this.replaceSVGs();
+        }
+      }.bind(this);
+
+      this.collection.getCurrentDatabase(callback);
+
+      return this;
+    },
+
+    toggleSettingsDropdown: function() {
+      //apply sorting to checkboxes
+      $('#dbSortDesc').attr('checked', this.collection.sortOptions.desc);
+
+      $('#databaseToggle').toggleClass('activated');
+      $('#databaseDropdown2').slideToggle(200);
+    },
+
+    selectedDatabase: function () {
+      return $('#selectDatabases').val();
+    },
+
+    handleError: function(status, text, dbname) {
+      if (status === 409) {
+        arangoHelper.arangoError("DB", "Database " + dbname + " already exists.");
+        return;
+      }
+      if (status === 400) {
+        arangoHelper.arangoError("DB", "Invalid Parameters");
+        return;
+      }
+      if (status === 403) {
+        arangoHelper.arangoError("DB", "Insufficent rights. Execute this from _system database");
+        return;
+      }
+    },
+
+    validateDatabaseInfo: function (db, user) {
+      if (user === "") {
+        arangoHelper.arangoError("DB", "You have to define an owner for the new database");
+        return false;
+      }
+      if (db === "") {
+        arangoHelper.arangoError("DB", "You have to define a name for the new database");
+        return false;
+      }
+      if (db.indexOf("_") === 0) {
+        arangoHelper.arangoError("DB ", "Databasename should not start with _");
+        return false;
+      }
+      if (!db.match(/^[a-zA-Z][a-zA-Z0-9_\-]*$/)) {
+        arangoHelper.arangoError("DB", "Databasename may only contain numbers, letters, _ and -");
+        return false;
+      }
+      return true;
+    },
+
+    createDatabase: function(e) {
+      e.preventDefault();
+      this.createAddDatabaseModal();
+    },
+
+    switchDatabase: function(e) {
+      if (!$(e.target).parent().hasClass('iconSet')) {
+        var changeTo = $(e.currentTarget).find("h5").text();
+        if (changeTo !== '') {
+          var url = this.collection.createDatabaseURL(changeTo);
+          window.location.replace(url);
+        }
+      }
+    },
+
+    submitCreateDatabase: function() {
+      var self = this, //userPassword,
+      dbname  = $('#newDatabaseName').val(),
+      userName = $('#newUser').val();
+
+      /*
+      if ($('#useDefaultPassword').val() === 'true') {
+        userPassword = 'ARANGODB_DEFAULT_ROOT_PASSWORD'; 
+      }
+      else {
+        userPassword = $('#newPassword').val();
+      }
+      if (!this.validateDatabaseInfo(name, userName, userPassword)) {
+        return;
+      }
+      */
+
+      var options = {
+        name: dbname
+        /*users: [
+          {
+            username: userName,
+            passwd: userPassword,
+            active: true
+          }
+        ]*/
+      };
+
+      this.collection.create(options, {
+        error: function(data, err) {
+          self.handleError(err.status, err.statusText, dbname);
+        },
+        success: function(data) {
+
+          if (userName !== 'root') {
+            $.ajax({
+              type: "PUT",
+              url: arangoHelper.databaseUrl("/_api/user/" + encodeURIComponent(userName) + "/database/" + encodeURIComponent(dbname)),
+              contentType: "application/json",
+              data: JSON.stringify({
+                grant: 'rw'
+              })
+            });
+          }
+          $.ajax({
+            type: "PUT",
+            url: arangoHelper.databaseUrl("/_api/user/root/database/" + encodeURIComponent(dbname)),
+            contentType: "application/json",
+            data: JSON.stringify({
+              grant: 'rw'
+            })
+          });
+
+          if (window.location.hash === '#databases') {
+            self.updateDatabases();
+          }
+          arangoHelper.arangoNotification("Database " + data.get("name") + " created.");
+        }
+      });
+
+      arangoHelper.arangoNotification("Database creation in progress.");
+      window.modalView.hide();
+    },
+
+    submitDeleteDatabase: function(dbname) {
+      var toDelete = this.collection.where({name: dbname});
+      toDelete[0].destroy({wait: true, url: arangoHelper.databaseUrl("/_api/database/"+dbname)});
+      this.updateDatabases();
+      window.App.naviView.dbSelectionView.render($("#dbSelect"));
+      window.modalView.hide();
+    },
+
+    changeDatabase: function(e) {
+      var changeTo = $(e.currentTarget).attr("id");
+      var url = this.collection.createDatabaseURL(changeTo);
+      window.location.replace(url);
+    },
+
+    updateDatabases: function() {
+      var self = this;
+      this.collection.fetch({
+        cache: false,
+        success: function() {
+          self.render();
+          window.App.handleSelectDatabase();
+        }
+      });
+    },
+
+    editDatabase: function(e) {
+      var dbName = this.evaluateDatabaseName($(e.currentTarget).attr("id"), '_edit-database'),
+        isDeletable = true;
+      if(dbName === this.currentDB) {
+        isDeletable = false;
+      }
+      this.createEditDatabaseModal(dbName, isDeletable);
+    },
+
+    search: function() {
+      var searchInput,
+        searchString,
+        strLength,
+        reducedCollection;
+
+      searchInput = $('#databaseSearchInput');
+      searchString = $("#databaseSearchInput").val();
+      reducedCollection = this.collection.filter(
+        function(u) {
+          return u.get("name").indexOf(searchString) !== -1;
+        }
+      );
+      $(this.el).html(this.template.render({
+        collection   : reducedCollection,
+        searchString : searchString,
+        currentDB    : this.currentDB
+      }));
+      this.replaceSVGs();
+
+      //after rendering, get the "new" element
+      searchInput = $('#databaseSearchInput');
+      //set focus on end of text in input field
+      strLength= searchInput.val().length;
+      searchInput.focus();
+      searchInput[0].setSelectionRange(strLength, strLength);
+    },
+
+    replaceSVGs: function() {
+      $(".svgToReplace").each(function() {
+        var img = $(this);
+        var id = img.attr("id");
+        var src = img.attr("src");
+        $.get(src, function(d) {
+          var svg = $(d).find("svg");
+          svg.attr("id", id)
+            .attr("class", "tile-icon-svg")
+            .removeAttr("xmlns:a");
+          img.replaceWith(svg);
+        }, "xml");
+      });
+    },
+
+    evaluateDatabaseName : function(str, substr) {
+      var index = str.lastIndexOf(substr);
+      return str.substring(0, index);
+    },
+
+    createEditDatabaseModal: function(dbName, isDeletable) {
+      var buttons = [],
+        tableContent = [];
+
+      tableContent.push(
+        window.modalView.createReadOnlyEntry("id_name", "Name", dbName, "")
+      );
+      if (isDeletable) {
+        buttons.push(
+          window.modalView.createDeleteButton(
+            "Delete",
+            this.submitDeleteDatabase.bind(this, dbName)
+          )
+        );
+      } else {
+        buttons.push(window.modalView.createDisabledButton("Delete"));
+      }
+      window.modalView.show(
+        "modalTable.ejs",
+        "Delete database",
+        buttons,
+        tableContent
+      );
+    },
+
+    createAddDatabaseModal: function() {
+      var buttons = [],
+        tableContent = [];
+
+      tableContent.push(
+        window.modalView.createTextEntry(
+          "newDatabaseName",
+          "Name",
+          "",
+          false,
+          "Database Name",
+          true,
+          [
+            {
+              rule: Joi.string().regex(/^[a-zA-Z]/),
+              msg: "Database name must start with a letter."
+            },
+            {
+              rule: Joi.string().regex(/^[a-zA-Z0-9\-_]*$/),
+              msg: 'Only Symbols "_" and "-" are allowed.'
+            },
+            {
+              rule: Joi.string().required(),
+              msg: "No database name given."
+            }
+          ]
+        )
+      );
+
+      var users = [];
+      window.App.userCollection.each(function(user) {
+        users.push({
+          value: user.get("user"),
+          label: user.get("user")
+        });
+      });
+
+      tableContent.push(
+        window.modalView.createSelectEntry(
+          "newUser",
+          "Username",
+          this.users !== null ? this.users.whoAmI() : 'root',
+          "Please define the owner of this database. This will be the only user having "
+            + "initial access to this database if authentication is turned on. Please note "
+            + "that if you specify a username different to your account you will not be "
+            + "able to access the database with your account after having creating it. "
+            + "Specifying a username is mandatory even with authentication turned off. "
+            + "If there is a failure you will be informed.",
+            users
+        )
+      );
+      /*
+      tableContent.push(
+        window.modalView.createTextEntry(
+          "newUser",
+          "Username",
+          this.users !== null ? this.users.whoAmI() : 'root',
+          "Please define the owner of this database. This will be the only user having "
+            + "initial access to this database if authentication is turned on. Please note "
+            + "that if you specify a username different to your account you will not be "
+            + "able to access the database with your account after having creating it. "
+            + "Specifying a username is mandatory even with authentication turned off. "
+            + "If there is a failure you will be informed.",
+          "Database Owner",
+          true,
+          [
+            {
+              rule: Joi.string().required(),
+              msg: "No username given."
+            }
+          ]
+        )
+      );
+      tableContent.push(
+        window.modalView.createSelectEntry(
+          "useDefaultPassword",
+          "Use default password",
+          true,
+          "Read the password from the environment variable ARANGODB_DEFAULT_ROOT_PASSWORD.",
+          [{value: false, label: "No"}, {value: true, label: "Yes"}]        )
+      );
+      tableContent.push(
+        window.modalView.createPasswordEntry(
+          "newPassword",
+          "Password",
+          "",
+          false,
+          "",
+          false
+        )
+      );
+      */
+      buttons.push(
+        window.modalView.createSuccessButton(
+          "Create",
+          this.submitCreateDatabase.bind(this)
+        )
+      );
+      window.modalView.show(
+        "modalTable.ejs",
+        "Create Database",
+        buttons,
+        tableContent
+      );
+
+      $('#useDefaultPassword').change(function() {
+
+        if ($('#useDefaultPassword').val() === 'true') {
+          $('#row_newPassword').hide();
+        }
+        else {
+          $('#row_newPassword').show();
+        }
+      });
+
+      $('#row_newPassword').hide();
+    }
+
+  });
+}());

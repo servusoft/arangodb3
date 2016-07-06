@@ -1,0 +1,60 @@
+branches:
+  only:
+    - master
+    - devel
+    - "1.4"
+    - "2.3"
+    - "2.4"
+    - "2.5"
+    - "2.6"
+    - "2.7"
+    - "2.8"
+    - "3.0"
+
+language: cpp
+compiler: g++
+sudo: false
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - george-edison55-precise-backports
+    packages:
+    - g++-4.9
+    - gcc-4.9
+    - binutils-gold
+    - gdb
+    - cmake-data
+    - cmake
+
+install:
+
+# prepare wrapper for gold
+- mkdir -p ~/bin/gold && (echo '#!/bin/bash'; echo 'gold "$@"') > ~/bin/gold/ld && chmod a+x ~/bin/gold/ld
+
+# prepare GCC & G++
+- rm -f $HOME/bin/gcc && ln -s /usr/bin/gcc-4.9 ~/bin/gcc
+- rm -f $HOME/bin/g++ && ln -s /usr/bin/g++-4.9 ~/bin/g++
+
+# prepare environment
+- export PATH="$HOME/bin:$PATH"
+- export CXX="g++-4.9"
+- export CC="gcc-4.9"
+- export CFLAGS="-B$HOME/bin/gold $CFLAGS"
+- export CXXFLAGS="-B$HOME/bin/gold $CXXFLAGS"
+
+before_script: "bash -c Installation/travisCI/before_script.sh"
+script: "bash -c Installation/travisCI/build.sh"
+after_failure: "bash -c Installation/travisCI/after_failure.sh"
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/806d92fa9ae97d241599
+    on_success: change
+    on_failure: always
+    on_start: false
+  slack:
+    secure: JrnDfdroyURrS85HIVsI4xw82taol+lvOJxduxz4T8mQuckaE3ECRYcxX7MzLJfjpeSLST5kttUiZBckHdZ/pnmraZlQ+1/b1VE6k5hFzkbeM0ShjXKTxHdudXaJKuENunMxDAjVWaBaTTh/iy8ZZbKUYQtWLtLfw3xa5zCKVaQ=
+
