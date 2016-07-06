@@ -25,6 +25,10 @@
 
 #include "Basics/Common.h"
 
+#ifdef __arm__
+  #include "Basics/FileUtils.h"
+#endif
+
 namespace arangodb {
 class ArangoGlobalContext {
  public:
