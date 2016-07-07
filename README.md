@@ -52,9 +52,9 @@ Um das zu beheben wie folgt: <br>
   #include "Basics/Common.h" <br>
 hinzufügen: <br>
 
-#ifdef __arm__ <br>
- #include "Basics/FileUtils.h" <br>
-#endif <br>
+'#ifdef __arm__ <br>
+' #include "Basics/FileUtils.h" <br>
+'#endif <br>
 6.3 ArangoGlobalContext.h speichrn  <br>
 
 ##7 cmake mit SSL Anpassung:
