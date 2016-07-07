@@ -27,6 +27,9 @@ fdisk -l (-> mmcblk2p1, mmcblk2p2, mmcblk2p3) <br>
 3.8 FileSystem mounten unter /mnt/wb: <br>
  mkdir /mnt/wb <br>
  mount /dev/mmcblk2p3 /mnt/wb <br>
+3.9 Permanent mounten
+ Bei Bedarf in /etc/fstab permanent eintragen: <br>
+ /dev/mmcblk2p3  /mnt/wb  ext4  defaults  0 1
 
 ##4. ArangoDB Clonen <br>
   mkdir /mnt/wb/adb3 <br>
