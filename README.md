@@ -105,7 +105,7 @@ Weiterhin sollte eine die Datei <b>arangod.conf</b> erstellt werden und mit folg
 <code>
 [server]<br>
 authentication = false<br>
-endpoint = tcp://0.0.0.0:8300<br>
+endpoint = tcp://0.0.0.0:8529<br>
 [javascript]<br>
 startup-directory = ./js<br>
 app-path = ./apps<br>
