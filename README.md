@@ -6,11 +6,11 @@
 1.4 Tastatur und Maus (USB) anschliessen <br>
 1.5 WB booten <br>
 
-##2 per ssh (putty) auf WB einloggen <br>
-2.1 putty starten und einlogen mit <br>
- putty ubuntu@wandboard (pass:ubuntu, rechnername "wandboard") <br>
-2.2 root werden mit <br>
- su -> pass:root<br>
+##2 Per ssh (putty) auf WB einloggen <br>
+2.1 Putty starten und einlogen mit <br>
+ putty <b>ubuntu@wandboard</b> (user:<b>ubuntur</b> pass:<b>ubuntu</b>, rechnername <b>wandboard</b>) <br>
+2.2 <b>root</b> werden mit <b>su</b> -> pass:<b>root</b><br> 
+Für die Komilirung reicht <b>ubuntu</b>-user aus<br>
 
 ##3 Disk erweitern
 3.1 Partitionen ansehen mit <br>
@@ -21,28 +21,31 @@
 3.4 partition schreiben "w" -> Meldung wegen neu booten <br>
 3.5 reboot, putty erneut starten und wie unter 2 einlogen <br>
 3.6 Partitionen ansehen mit  <br>
-fdisk -l (-> mmcblk2p1, mmcblk2p2, mmcblk2p3) <br>
-3.7 FileSystem erstellen: <br>
- mkfs.ext4 /dev/mmcblk2p3 <br>
+<b>fdisk -l</b> (-> mmcblk2p1, mmcblk2p2, mmcblk2p3) <br>
+3.7 File-System erstellen mit: <b>mkfs.ext4 /dev/mmcblk2p3</b> <br>
 3.8 FileSystem mounten unter /mnt/wb: <br>
- mkdir /mnt/wb <br>
- mount /dev/mmcblk2p3 /mnt/wb <br>
-3.9 Permanent mounten <br>
- Bei Bedarf in /etc/fstab permanent eintragen: <br>
- /dev/mmcblk2p3  /mnt/wb  ext4  defaults  0 1
+ <b>mkdir /mnt/wb</b> <br>
+ <b>mount /dev/mmcblk2p3 /mnt/wb</> <br>
+3.9 Permanent mounten: <br>
+ Bei die Patition Bedarf in <b>/etc/fstab</b> permanent eintragen: <br>
+ <b>/dev/mmcblk2p3  /mnt/wb  ext4  defaults  0 1</b>
 
 ##4. ArangoDB Clonen <br>
-  mkdir /mnt/wb/adb3 <br>
-  cd /mnt/wb/adb3 <br>
-  git clone --single-branch --depth 1 -b 3.0 git://github.com/arangodb/arangodb.git <br>
+  <b>mkdir /mnt/wb/adb3</b> <br>
+  <b>cd /mnt/wb/adb3</b> <br>
+  <b>git clone --single-branch --depth 1 -b 3.0 git://github.com/arangodb/arangodb.git</b> <br>
 
 ##5 RocksDB anpassung -> auch für Cross-Compiling! <br>
   Wegen fest eingegebenen Schalter wird Fehler angezeigt: <br>
 c++: error: unrecognized command line option '-momit-leaf-frame-pointer' <br>
-Um das zu beheben wie folgt: <br>
-5. öffnen /3rdParty/rocksdb/rocksdb/CMakeLists.txt <br>
-5.1. finden und entfernen Option "-momit-leaf-frame-pointer" in der Datei (kommt nur 1 mal vor),  <br>
+Um das zu beheben wie folgt anpasse: <br>
+5. öffnen <b>/3rdParty/rocksdb/rocksdb/CMakeLists.txt</b> <br>
+5.1. Option finden und entfernen: <b>"-momit-leaf-frame-pointer"</b> in der Datei (kommt nur 1 mal vor),  <br>
 5.2 CMakeLists.txt speichern  <br>
+Der ARM-Compiler kann diese Option nicht "verdauen". <br>
+Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links:<br> 
+<https://github.com/facebook/rocksdb/pull/964><br>
+<https://github.com/facebook/rocksdb/issues/810><br>
 
 ##6. #include für __arm__ anpassen
 
