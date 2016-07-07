@@ -57,7 +57,10 @@ hinzufügen: <br>
 6.3 ArangoGlobalContext.h speichrn  <br>
 
 ##7 cmake mit SSL Anpassung:
-cmake -DOPENSSL_ROOT_DIR=/usr/local/ssl -DCMAKE_BUILD_TYPE=Release .. <br>
+cmake \\ <br>
+-DOPENSSL_ROOT_DIR=/usr/local/ssl \\ <br>
+-DCMAKE_BUILD_TYPE=Release \\ <br>
+.. <br>
 
 ##8 make -j4 <br>
 
