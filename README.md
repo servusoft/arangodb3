@@ -201,9 +201,9 @@ danach <br>
 <b>--host=arm-linux-gnu \\</b><br>
 <b>--prefix=/opt/gnuarm</b><br>
 
-6.4. // SSL Kompilieren und installieren
+6.4. // SSL Kompilieren und installieren<br>
 <b>make</b><br>
-<b>make install</b><br> //on /opt/gnuarm
+<b>make install</b> //in /opt/gnuarm <br>
 
 6.5.// zurück in ArangoDB
 cd .. // openssl
