@@ -59,7 +59,7 @@ Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links d
 7.1 Datei <b>ArangoGlobalContext.h</b> öffnen mit z.B. nano-Eritor: <br>
 <b>nano ./lib/Basics/ArangoGlobalContext.h</b> <br>
 7.2 hinter <b>#include "Basics/Common.h" </b> hinzufügen: <br>
- #ifdef __arm__<br>
+ #ifdef \_\_arm\_\_<br>
  #include "Basics/FileUtils.h"<br>
  #endif<br>
 7.3 Änderingen speichern  <br>
@@ -71,8 +71,8 @@ Der Aufwand kann erspart werden, wenn die bereits angepasste Version geklont wir
 Die Änderungen können unter <https://github.com/servusoft/arangodb3/blob/master/adb3.diff> angesehen werden<br>
 
 ##9. cmake mit SSL Anpassung
-Bei der Installation mit <b>sudo apt-get install libssl-dev</b> kann auf ARM der SSL-Pfad von Standard abweichen.
-In gegeben Fall es ist "/usr/local/ssl". Dadurch sollte es cmake mitgeteilt werden:<br>
+Bei der Installation mit <b>sudo apt-get install libssl-dev</b> kann auf ARM der SSL-Pfad von Standard abweichen.<br>
+In gegebenem Fall es ist "/usr/local/ssl". Dadurch sollte es cmake mitgeteilt werden:<br>
 <b>cmake -DOPENSSL_ROOT_DIR=/usr/local/ssl ..</b> <br>
 Hilfe und weitere Informationen unter:<br>
 <https://docs.arangodb.com/3.0/cookbook/Compiling/Debian.html><br>
