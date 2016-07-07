@@ -59,15 +59,13 @@ Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links d
 7.1 Datei <b>ArangoGlobalContext.h</b> öffnen mit z.B. nano-Eritor: <br>
 <b>nano ./lib/Basics/ArangoGlobalContext.h</b> <br>
 7.2 hinter <b>#include "Basics/Common.h" </b> hinzufügen: <br>
-<code>
  #ifdef __arm__<br>
  #include "Basics/FileUtils.h"<br>
  #endif<br>
-</code>
-6.3 Änderingen speichrn  <br>
+7.3 Änderingen speichern  <br>
 
 ##8. Angepasste Version clonen 
-Der Aufwand kann erspart werden, wenn die bereits angepasste Version mit geklont wird:<br>
+Der Aufwand kann erspart werden, wenn die bereits angepasste Version geklont wird:<br>
 <b>git clone -b 3.0-wandboard --single-branch --depth 1 git://github.com/servusoft/arangodb3.git</b> <br>
 <https://github.com/servusoft/arangodb3/tree/3.0-wandboard><br>
 Die Änderungen können unter <https://github.com/servusoft/arangodb3/blob/master/adb3.diff> angesehen werden<br>
