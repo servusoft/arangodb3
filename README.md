@@ -1,18 +1,18 @@
 #Build ArangoDB auf WandBoard
-##1 WandBoard-Image mit Ubuntu erstellen 
+##1. WandBoard-Image mit Ubuntu erstellen 
 1.1 Ubuntu-Image <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/wandboard-all-ubuntu-16.04-sdcard-20160525.zip> von  <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/> herunterladen <br>
 1.2 WB-Image auf MicroSD schreiben (min 8 GB)  <br>
 1.3 MicroSD in WB platzieren (Slot auf Prozessor-Platine) <br>
 1.4 Tastatur und Maus (USB) anschliessen <br>
 1.5 WB booten <br>
 
-##2 Per ssh (putty) auf WB einloggen <br>
+##2. Per ssh (putty) auf WB einloggen <br>
 2.1 Putty starten und einlogen mit <br>
  putty <b>ubuntu@wandboard</b> (user:<b>ubuntur</b> pass:<b>ubuntu</b>, rechnername <b>wandboard</b>) <br>
 2.2 <b>root</b> werden mit <b>su</b> -> pass:<b>root</b><br> 
 Für die Komilirung reicht <b>ubuntu</b>-user aus<br>
 
-##3 Disk (Parttion) der SD-Karte erweitern
+##3. Disk (Parttion) der SD-Karte erweitern
 3.1 Partitionen ansehen mit <b>fdisk -l</b> (angezeigt wird mmcblk2p1, mmcblk2p2) <br>
 3.2 Editor starten mit <b>fdisk mmcblk2</b> <br>
 3.3 Partition erstellen mit "n" Enter, Enter,... (Default-Werte) <br>
@@ -43,7 +43,7 @@ Die erforderliche Anwendungen sind bereits installiert, jedoch zur Kontrolle sol
   <b>cd /mnt/wb/adb3</b> <br>
   <b>git clone --single-branch --depth 1 -b 3.0 git://github.com/arangodb/arangodb.git</b> <br>
 
-##6 RocksDB anpassung
+##6. RocksDB anpassung
 Wegen einem fest eingegebenen Schalter wird Fehler angezeigt: <br>
 <b>c++: error: unrecognized command line option '-momit-leaf-frame-pointer'</b> <br>
 Um das zu beheben wie folgt vorgehen: <br>
@@ -66,13 +66,13 @@ Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links d
 </code>
 6.3 Änderingen speichrn  <br>
 
-##8 Angepasste Version clonen 
+##8. Angepasste Version clonen 
 Der Aufwand kann erspart werden, wenn die bereits angepasste Version mit geklont wird:<br>
 <b>git clone -b 3.0-wandboard --single-branch --depth 1 git://github.com/servusoft/arangodb3.git</b> <br>
 <https://github.com/servusoft/arangodb3/tree/3.0-wandboard><br>
 Die Änderungen können unter <https://github.com/servusoft/arangodb3/blob/master/adb3.diff> angesehen werden<br>
 
-##8 cmake mit SSL Anpassung
+##9. cmake mit SSL Anpassung
 Bei der Installation mit <b>sudo apt-get install libssl-dev</b> kann auf ARM der SSL-Pfad von Standard abweichen.
 In gegeben Fall es ist "/usr/local/ssl". Dadurch sollte es cmake mitgeteilt werden:<br>
 <b>cmake -DOPENSSL_ROOT_DIR=/usr/local/ssl ..</b> <br>
@@ -85,7 +85,7 @@ Hilfe und weitere Informationen unter:<br>
 Mit <b>make -j4</b> (bei Wandboard Quad-Version, dauert etwa 3 Stunden)<br>
 Nach dem Ablauf könnte ArangoDB in einem beliegeigen Ort getesten werden dazu werden zwei Ordner benötigt:
 
-##11 Test 
+##11. Tests 
 Zum Testen erforderlich sind zwei Ordner aus der Repository:
 Das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test</b> und 
 die das erstellte <b>./build/bin</b>, kopieren such in <b>/home/test</b><br>
@@ -150,5 +150,83 @@ vpack-version: 0.1.30<br>
 zlib-version: 1.2.8<br>
 
 
-##Cross-Compiling <br>
-TODO
+#1. Cross-Compiling unter Ubuntu/Debian<br>
+
+##1. Compiler und  utils holen<br>
+
+<b>sudo apt-get install git</b><br>
+<b>sudo apt-get install cmake make build-essential openssl python2.7 g++ gcc</b><br>
+<b>sudo apt-get install libssl-dev</b><br>
+
+##2. Cross-Compiler tools holen
+<b>apt-get install arm-linux-gnueabihf*
+
+##3. Umgebung für Cross-Comiling anpassen
+<b>export MACHINE=armv7 \\</b><br>
+<b>export ARCH=arm \\</b><br>
+<b>export CROSSTOOL=arm-linux-gnueabihf </b><br>
+<b>export CXX=$CROSSTOOL-g++ \\</b><br>
+<b>export CC=$CROSSTOOL-gcc \\</b><br>
+<b>export AR=$CROSSTOOL-ar \\</b><br>
+<b>export AS=$CROSSTOOL-as \\</b><br>
+<b>export LINK=$CXX</b><br>
+
+##4. // check
+<b>$CC --version</b><br>
+=> arm-linux-gnueabi-gcc (Ubuntu/Linaro 5.3.1-14ubuntu2) 5.3.1 20160413
+<b>$CXX --version</b><br>
+=> arm-linux-gnueabi-g++ (Ubuntu/Linaro 5.3.1-14ubuntu2) 5.3.1 20160413
+
+##5. // get source (3.0)
+git clone - b 3.0 --single-branch --depth 1 git://github.com/arangodb/arangodb.git</b><br>
+
+
+##7. // SSL für ARM-Platform compilieren<br>
+7.1 // Source holen
+<b>cd ./3rdParty</b><br>
+<b>mkdir openssl</b><br>
+<b>cd openssl</b><br>
+<b>wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz</b><br>
+<b>tar xzf openssl-1.0.2h.tar.gz</b><br>
+<b>or latest:</b><br>
+<b>wget https://www.openssl.org/source/openssl-1.0.2g.tar.gz</b><br>
+<b>tar xzf openssl-1.0.2g.tar.gz</b><br>
+
+7.2 // Umgebung für Cross-Comiling  anpassen<br>
+s. Punkt <b>3</b><br>
+
+7.3. // SSL für ARM configurieren<br>
+<b>cd openssl-1.0.2h</b><br>
+<b>./config</b><br> 
+-> Configured for linux-armv4.<br> 
+danach <br> 
+<b>./Configure \\</b><br>
+<b>--target=linux-armv4 \\</b><br>
+<b>--host=arm-linux-gnu \\</b><br>
+<b>--prefix=/opt/gnuarm</b><br>
+
+7.4. // SSL Kompilieren und installieren
+<b>make</b><br>
+<b>make install</b><br> //on /opt/gnuarm
+
+7.5.// zurück in ArangoDB
+cd .. // openssl
+cd .. // 3rdParty
+cd .. // ArangoDB
+
+##8. //build 
+<b>mkdir -p build</b><br>
+<b>cd build</b><br>
+
+<b>cmake \\</b><br>
+<b>-DCROSS_COMPILING=true \\</b><br>
+<b>-DOPENSSL_ROOT_DIR=/opt/gnuarm \\</b><br>
+<b>-DCMAKE_TARGET_ARCHITECTURES==armv7 \\</b><br>
+<b>..</b><br>
+
+
+##9 Problem mit -m32 und -m64 Schalter
+Wärend bei nativen Komilierung auf Wandboard tretten keine Feheler auf, hacht bei Cross-Komilirung an dem o.g. Compiler-Schlater.<br>
+die arm-linux-gnueabihf-g++ nicht kennt. Das Problem tritt nur mit ICU bei Complieren der V8 auf unter:<br> <b>arangodb/3rdParty/V8/V8-5.0.71.39/third_party/icu</b>
+Es liegt wohl an daran, dass die Erkennung des Plattform nicht für Cross-Comilier perfekt ist.
+
