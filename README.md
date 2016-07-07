@@ -69,7 +69,8 @@ Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links d
 ##8 Angepasste Version clonen 
 Der Aufwand kann erspart werden, wenn die bereits angepasste Version mit geklont wird:<br>
 <b>git clone -b 3.0-wandboard --single-branch --depth 1 git://github.com/servusoft/arangodb3.git</b> <br>
-<https://github.com/servusoft/arangodb3/tree/3.0-wandboard>
+<https://github.com/servusoft/arangodb3/tree/3.0-wandboard><br>
+Die Änderungen können unter <https://github.com/servusoft/arangodb3/blob/master/adb3.diff> angesehen werden<br>
 
 ##8 cmake mit SSL Anpassung
 Bei der Installation mit <b>sudo apt-get install libssl-dev</b> kann auf ARM der SSL-Pfad von Standard abweichen.
