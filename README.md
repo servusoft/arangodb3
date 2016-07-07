@@ -86,10 +86,12 @@ Nach dem Ablauf könnte ArangoDB in einem beliegeigen Ort getesten werden dazu w
 ##11. Tests 
 Zum Testen erforderlich sind zwei Ordner aus der Repository:
 Das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test</b> und 
-die das erstellte <b>./build/bin</b>, kopieren such in <b>/home/test</b><br>
-ArangoDB benötigt noch eiun paar Ordner, ebenso sollte ArangoDB unter <b>arangodb</b> benutzer ausgeführt werden. <br>
+die das erstellte <b>./build/bin</b>, kopieren ebenso in <b>/home/test</b><br>
+ArangoDB benötigt noch ein paar weitere Ordner. <br>
+ArangoDB sollte unter benutzer <b>arangodb</b> ausgeführt werden. <br>
 Dazu sind einige Anpassungen erforderlich: (Als bash-Schript oder einzeln in Test Ordner (/home/test) ausführen)<br>
 
+Datei cho* (mit Ausführungsrechten)
 adduser arangodb<br>
 mkdir apps<br>
 sudo chown arangodb:arangodb -R apps<br>
@@ -99,7 +101,7 @@ mkdir temp<br>
 sudo chown arangodb:arangodb temp<br>
 <br>
 
-Weiterhin sollte eine die Datei <b>arangod.conf</b> erstellt werden und mit folgenden Inhalt befüllt werden:<br>
+Weiterhin sollte die Datei <b>arangod.conf</b> erstellt und mit folgenden Inhalt befüllt werden:<br>
 
 [server]<br>
 authentication = false<br>
@@ -117,7 +119,7 @@ path = ./temp<br>
 
 Gestartet wird es mit: <br>
 <b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b><br>
-Es kann ebanfalls als Schript mit Ausführungsrechten erstellt werden.<br>
+Es kann ebanfalls Datei (z.B. run* mit Ausführungsrechten) erstellt werden.<br>
 
 Der einfache Test der Version mit <b>./bin/arangod --version</b> liefert folgende Werte:<br>
 3.0.1<br>
@@ -149,7 +151,6 @@ zlib-version: 1.2.8<br>
 #Cross-Compiling unter Ubuntu/Debian
 
 ##1. Compiler und  utils holen<br>
-
 <b>sudo apt-get install git</b><br>
 <b>sudo apt-get install cmake make build-essential openssl python2.7 g++ gcc</b><br>
 <b>sudo apt-get install libssl-dev</b><br>
@@ -160,7 +161,7 @@ zlib-version: 1.2.8<br>
 ##3. Umgebung für Cross-Comiling anpassen
 <b>export MACHINE=armv7 \\</b><br>
 <b>export ARCH=arm \\</b><br>
-<b>export CROSSTOOL=arm-linux-gnueabihf </b><br>
+<b>export CROSSTOOL=arm-linux-gnueabihf</b><br>
 <b>export CXX=$CROSSTOOL-g++ \\</b><br>
 <b>export CC=$CROSSTOOL-gcc \\</b><br>
 <b>export AR=$CROSSTOOL-ar \\</b><br>
@@ -176,9 +177,8 @@ zlib-version: 1.2.8<br>
 ##5. // get source (3.0)
 git clone - b 3.0 --single-branch --depth 1 git://github.com/arangodb/arangodb.git</b><br>
 
-
-##7. // SSL für ARM-Platform compilieren<br>
-7.1 // Source holen
+##6. // SSL für ARM-Platform compilieren<br>
+6.1 // Source holen
 <b>cd ./3rdParty</b><br>
 <b>mkdir openssl</b><br>
 <b>cd openssl</b><br>
@@ -188,10 +188,10 @@ git clone - b 3.0 --single-branch --depth 1 git://github.com/arangodb/arangodb.g
 <b>wget https://www.openssl.org/source/openssl-1.0.2g.tar.gz</b><br>
 <b>tar xzf openssl-1.0.2g.tar.gz</b><br>
 
-7.2 // Umgebung für Cross-Comiling  anpassen<br>
+6.2 // Umgebung für Cross-Comiling  anpassen<br>
 s. Punkt <b>3</b><br>
 
-7.3. // SSL für ARM configurieren<br>
+6.3. // SSL für ARM configurieren<br>
 <b>cd openssl-1.0.2h</b><br>
 <b>./config</b><br> 
 -> Configured for linux-armv4.<br> 
@@ -201,16 +201,16 @@ danach <br>
 <b>--host=arm-linux-gnu \\</b><br>
 <b>--prefix=/opt/gnuarm</b><br>
 
-7.4. // SSL Kompilieren und installieren
+6.4. // SSL Kompilieren und installieren
 <b>make</b><br>
 <b>make install</b><br> //on /opt/gnuarm
 
-7.5.// zurück in ArangoDB
+6.5.// zurück in ArangoDB
 cd .. // openssl
 cd .. // 3rdParty
 cd .. // ArangoDB
 
-##8. //build 
+##7. //build 
 <b>mkdir -p build</b><br>
 <b>cd build</b><br>
 
@@ -221,8 +221,11 @@ cd .. // ArangoDB
 <b>..</b><br>
 
 
-##9 Problem mit -m32 und -m64 Schalter
-Wärend bei nativen Komilierung auf Wandboard tretten keine Feheler auf, hacht bei Cross-Komilirung an dem o.g. Compiler-Schlater.<br>
-die arm-linux-gnueabihf-g++ nicht kennt. Das Problem tritt nur mit ICU bei Complieren der V8 auf unter:<br> <b>arangodb/3rdParty/V8/V8-5.0.71.39/third_party/icu</b>
-Es liegt wohl an daran, dass die Erkennung des Plattform nicht für Cross-Comilier perfekt ist.
+##8 Problem mit -m32 und -m64 Schalter
+Wärend bei nativen Komilierung auf Wandboard tretten keine Feheler auf, <br>
+schlägt die Cross-Komilirung an dem o.g. Compiler-Schlater fehl.<br>
+(Für arm-linux-gnueabihf-g++ Compiler/Linker unbekannt). <br>
+Das Problem tritt nur mit ICU-Modul bei Complieren der V8 auf unter:<br> 
+<b>arangodb/3rdParty/V8/V8-5.0.71.39/third_party/icu</b>
+Es liegt wohl daran, dass die Erkennung des Plattforms bei Cross-Comilier (noch) nicht perfekt ist.
 
