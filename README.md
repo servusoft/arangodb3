@@ -12,30 +12,26 @@
 2.2 <b>root</b> werden mit <b>su</b> -> pass:<b>root</b><br> 
 Für die Komilirung reicht <b>ubuntu</b>-user aus<br>
 
-##3 Disk erweitern
-3.1 Partitionen ansehen mit <br>
- fdisk -l (-> mmcblk2p1, mmcblk2p2) <br>
-3.2 Editor starten mit <br>
- fdisk mmcblk2  <br>
-3.3 partition erstellen "n" Enter, Enter,... (Default-Werte) <br>
-3.4 partition schreiben "w" -> Meldung wegen neu booten <br>
-3.5 reboot, putty erneut starten und wie unter 2 einlogen <br>
-3.6 Partitionen ansehen mit  <br>
-<b>fdisk -l</b> (-> mmcblk2p1, mmcblk2p2, mmcblk2p3) <br>
-3.7 File-System erstellen mit: <b>mkfs.ext4 /dev/mmcblk2p3</b> <br>
-3.8 FileSystem mounten unter /mnt/wb: <br>
+##3 Disk (Parttion) der SD-Karte erweitern
+3.1 Partitionen ansehen mit <b>fdisk -l</b> (angezeigt wird mmcblk2p1, mmcblk2p2) <br>
+3.2 Editor starten mit <b>fdisk mmcblk2</b> <br>
+3.3 Partition erstellen mit "n" Enter, Enter,... (Default-Werte) <br>
+3.4 Partition schreiben mit "w" -> (Meldung wegen neu booten) <br>
+3.5 Neu starten mit <b>sudo reboot</b>, pe putty erneut wie unter (2) einlogen <br>
+3.6 Partitionen ansehen mit  <b>fdisk -l</b> (angezeigt wird nun mmcblk2p1, mmcblk2p2, mmcblk2p3) <br>
+3.7 Auf der Partitionen Datei-System <b>ext4</b> erstellen mit: <b>mkfs.ext4 /dev/mmcblk2p3</b> <br>
+3.8 Partition <b>mmcblk2p3</b> mounten unter z.B. <b>/mnt/wb:</b> <br>
  <b>mkdir /mnt/wb</b> <br>
  <b>mount /dev/mmcblk2p3 /mnt/wb</> <br>
-3.9 Permanent mounten: <br>
- Bei die Patition Bedarf in <b>/etc/fstab</b> permanent eintragen: <br>
+3.9 Die Patition eventuell in <b>/etc/fstab</b> permanent eintragen: <br>
  <b>/dev/mmcblk2p3  /mnt/wb  ext4  defaults  0 1</b>
 
-##4. ArangoDB Clonen <br>
+##4. ArangoDB Clonen
   <b>mkdir /mnt/wb/adb3</b> <br>
   <b>cd /mnt/wb/adb3</b> <br>
   <b>git clone --single-branch --depth 1 -b 3.0 git://github.com/arangodb/arangodb.git</b> <br>
 
-##5 RocksDB anpassung -> auch für Cross-Compiling! <br>
+##5 RocksDB anpassung
   Wegen fest eingegebenen Schalter wird Fehler angezeigt: <br>
 c++: error: unrecognized command line option '-momit-leaf-frame-pointer' <br>
 Um das zu beheben wie folgt anpasse: <br>
@@ -64,3 +60,11 @@ hinzufügen: <br>
 cmake -DOPENSSL_ROOT_DIR=/usr/local/ssl -DCMAKE_BUILD_TYPE=Release .. <br>
 
 ##8 make -j4 <br>
+
+##9 Angepasste Version clonen 
+Der Aufwand kann erspart werden, wenn die bereits angepasste Version mit geklont wird:<br>
+<b>git clone -b 3.0-wandboard --single-branch --depth 1 git://github.com/servusoft/arangodb3.git</b> <br>
+<https://github.com/servusoft/arangodb3/tree/3.0-wandboard>
+
+##Cross-Compiling <br>
+TODO
