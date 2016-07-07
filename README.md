@@ -17,7 +17,7 @@ Für die Komilirung reicht <b>ubuntu</b>-user aus<br>
 3.2 Editor starten mit <b>fdisk mmcblk2</b> <br>
 3.3 Partition erstellen mit "n" Enter, Enter,... (Default-Werte) <br>
 3.4 Partition schreiben mit "w" -> (Meldung wegen neu booten) <br>
-3.5 Neu starten mit <b>sudo reboot</b>, pe putty erneut wie unter (2) einlogen <br>
+3.5 Neu starten mit <b>sudo reboot</b>, per ssh erneut (wie unter 2) einlogen <br>
 3.6 Partitionen ansehen mit  <b>fdisk -l</b> (angezeigt wird nun mmcblk2p1, mmcblk2p2, mmcblk2p3) <br>
 3.7 Auf der Partitionen Datei-System <b>ext4</b> erstellen mit: <b>mkfs.ext4 /dev/mmcblk2p3</b> <br>
 3.8 Partition <b>mmcblk2p3</b> mounten unter z.B. <b>/mnt/wb:</b> <br>
@@ -39,9 +39,9 @@ Die erforderliche Anwendungen sind bereits installiert, jedoch zur Kontrolle sol
 <b>sudo apt-get install libssl-dev</b>
 
 ##5. ArangoDB Clonen
-  <b>mkdir /mnt/wb/adb3</b> <br>
-  <b>cd /mnt/wb/adb3</b> <br>
-  <b>git clone --single-branch --depth 1 -b 3.0 git://github.com/arangodb/arangodb.git</b> <br>
+<b>mkdir /mnt/wb/adb3</b> <br>
+<b>cd /mnt/wb/adb3</b> <br>
+<b>git clone --single-branch --depth 1 -b 3.0 git://github.com/arangodb/arangodb.git</b> <br>
 
 ##6. RocksDB anpassung
 Wegen einem fest eingegebenen Schalter wird Fehler angezeigt: <br>
@@ -55,7 +55,7 @@ Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links d
 <https://github.com/facebook/rocksdb/pull/964><br>
 <https://github.com/facebook/rocksdb/issues/810><br>
 
-##7.Fehlenden Header für ARM-Platform anpassen
+##7. Fehlenden Header für ARM-Platform anpassen
 7.1 Datei <b>ArangoGlobalContext.h</b> öffnen mit z.B. nano-Eritor: <br>
 <b>nano ./lib/Basics/ArangoGlobalContext.h</b> <br>
 7.2 hinter <b>#include "Basics/Common.h" </b> hinzufügen: <br>
