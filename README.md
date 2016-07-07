@@ -150,7 +150,7 @@ vpack-version: 0.1.30<br>
 zlib-version: 1.2.8<br>
 
 
-#1. Cross-Compiling unter Ubuntu/Debian<br>
+#Cross-Compiling unter Ubuntu/Debian
 
 ##1. Compiler und  utils holen<br>
 
