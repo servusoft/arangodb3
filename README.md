@@ -184,33 +184,25 @@ git clone - b 3.0 --single-branch --depth 1 git://github.com/arangodb/arangodb.g
 <b>cd openssl</b><br>
 <b>wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz</b><br>
 <b>tar xzf openssl-1.0.2h.tar.gz</b><br>
-<b>or latest:</b><br>
-<b>wget https://www.openssl.org/source/openssl-1.0.2g.tar.gz</b><br>
-<b>tar xzf openssl-1.0.2g.tar.gz</b><br>
 
 6.2 // Umgebung für Cross-Comiling  anpassen<br>
 s. Punkt <b>3</b><br>
 
 6.3. // SSL für ARM configurieren<br>
 <b>cd openssl-1.0.2h</b><br>
-<b>./config</b><br> 
--> Configured for linux-armv4.<br> 
-danach <br> 
-<b>./Configure \\</b><br>
-<b>--target=linux-armv4 \\</b><br>
-<b>--host=arm-linux-gnu \\</b><br>
-<b>--prefix=/opt/gnuarm</b><br>
+<b>./Configure linux-armv4 --openssldir=/opt/gnuarm</b><br>
 
 6.4. // SSL Kompilieren und installieren<br>
-<b>make</b><br>
-<b>make install</b> //in /opt/gnuarm <br>
+<b>make -j4</b><br>
+//SSL -> /opt/gnuarm <br>
+<b>make install</b><br> 
 
-6.5.// zurück in ArangoDB
-cd .. // openssl
-cd .. // 3rdParty
-cd .. // ArangoDB
+6.5.// zurück in ArangoDB<br>
+cd .. // openssl<br>
+cd .. // 3rdParty<br>
+cd .. // ArangoDB<br>
 
-##7. //build 
+##7. //build<br>
 <b>mkdir -p build</b><br>
 <b>cd build</b><br>
 
