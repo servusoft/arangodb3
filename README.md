@@ -90,8 +90,8 @@ Zum Testen erforderlich sind zwei Ordner aus der Repository:
 Das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test</b> und 
 die das erstellte <b>./build/bin</b>, kopieren such in <b>/home/test</b><br>
 ArangoDB benötigt noch eiun paar Ordner, ebenso sollte ArangoDB unter <b>arangodb</b> benutzer ausgeführt werden. <br>
-Dazu sind einige Anpassungen erforderlich: (Als bash-Schript oder einzeln in Test Ordner (/home/test) ausführen)
-<code>
+Dazu sind einige Anpassungen erforderlich: (Als bash-Schript oder einzeln in Test Ordner (/home/test) ausführen)<br>
+
 adduser arangodb<br>
 mkdir apps<br>
 sudo chown arangodb:arangodb -R apps<br>
@@ -99,10 +99,10 @@ mkdir db<br>
 sudo chown arangodb:arangodb db<br>
 mkdir temp<br>
 sudo chown arangodb:arangodb temp<br>
-</code><br>
+<br>
 
 Weiterhin sollte eine die Datei <b>arangod.conf</b> erstellt werden und mit folgenden Inhalt befüllt werden:<br>
-<code>
+
 [server]<br>
 authentication = false<br>
 endpoint = tcp://0.0.0.0:8529<br>
@@ -115,14 +115,13 @@ level = info<br>
 directory = ./db<br>
 [temp]<br>
 path = ./temp<br>
-#Optional<br>
-</code><br>
+<br>
 
-Gestartet wird es mit (kann ebanfalls als Schript mit Ausführungsrechten aerstellt werden)<br>
-<b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b>
+Gestartet wird es mit: <br>
+<b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b><br>
+Es kann ebanfalls als Schript mit Ausführungsrechten erstellt werden.<br>
 
 Der einfache Test der Version mit <b>./bin/arangod --version</b> liefert folgende Werte:<br>
-<code>
 3.0.1<br>
 architecture: 32bit<br>
 asan: false<br>
@@ -148,7 +147,6 @@ tcmalloc: false<br>
 v8-version: 5.0.71.39<br>
 vpack-version: 0.1.30<br>
 zlib-version: 1.2.8<br>
-
 
 #Cross-Compiling unter Ubuntu/Debian
 
