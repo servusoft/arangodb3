@@ -1,6 +1,6 @@
 #Build ArangoDB auf WandBoard
-##1 WB-Image mit Ubuntu erstellen 
-1.1 WB-Image <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/wandboard-all-ubuntu-16.04-sdcard-20160525.zip> von  <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/> herunterladen <br>
+##1 WandBoard-Image mit Ubuntu erstellen 
+1.1 Ubuntu-Image <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/wandboard-all-ubuntu-16.04-sdcard-20160525.zip> von  <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/> herunterladen <br>
 1.2 WB-Image auf MicroSD schreiben (min 8 GB)  <br>
 1.3 MicroSD in WB platzieren (Slot auf Prozessor-Platine) <br>
 1.4 Tastatur und Maus (USB) anschliessen <br>
