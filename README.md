@@ -160,13 +160,14 @@ zlib-version: 1.2.8<br>
 
 ##3. Umgebung für Cross-Comiling anpassen
 <b>export MACHINE=armv7 \\</b><br>
-<b>export ARCH=arm \\</b><br>
+<b>export ARCH=arm \\</b><br><br>
 <b>export CROSSTOOL=arm-linux-gnueabihf</b><br>
 <b>export CXX=$CROSSTOOL-g++ \\</b><br>
 <b>export CC=$CROSSTOOL-gcc \\</b><br>
 <b>export AR=$CROSSTOOL-ar \\</b><br>
 <b>export AS=$CROSSTOOL-as \\</b><br>
-<b>export LINK=$CXX</b><br>
+<b>export RANLIB=$CROSSTOOL-ranlib</b><br>
+<!--<b>export LINK=$CXX</b><br>-->
 
 ##4. // check
 <b>$CC --version</b><br>
