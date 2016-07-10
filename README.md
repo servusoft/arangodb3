@@ -1,16 +1,17 @@
-#Build ArangoDB auf WandBoard
+#Build ArangoDB auf Wandboard
 ##1. WandBoard-Image mit Ubuntu erstellen 
 1.1 Ubuntu-Image <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/wandboard-all-ubuntu-16.04-sdcard-20160525.zip> von  <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/> herunterladen <br>
 1.2 WB-Image auf MicroSD schreiben (min 8 GB)  <br>
 1.3 MicroSD in WB platzieren (Slot auf Prozessor-Platine) <br>
-1.4 Tastatur und Maus (USB) anschliessen <br>
-1.5 WB booten <br>
+1.4 Monitor (HDMI), Tastatur und Maus (USB) anschliessen <br>
+1.5 Wandboard booten <br>
+Es direkt an dem Board per LXTerminal gearbeitet werden, jedoch von  Vorteil ist die Arbeit mit einem SSH Client (z.B.putty)<br>
 
-##2. Per ssh (putty) auf WB einloggen <br>
+##2. Per ssh (putty) auf Wandboard einloggen <br>
 2.1 Putty starten und einlogen mit <br>
- putty <b>ubuntu@wandboard</b> (user:<b>ubuntur</b> pass:<b>ubuntu</b>, rechnername <b>wandboard</b>) <br>
+ putty <b>ubuntu@wandboard</b> (User:<b>ubuntur</b> Pass:<b>ubuntu</b>, Rechnername <b>wandboard</b>) <br>
 2.2 <b>root</b> werden mit <b>su</b> -> pass:<b>root</b><br> 
-Für die Komilirung reicht <b>ubuntu</b>-user aus<br>
+Für die Kompilirung reicht <b>ubuntu</b>-user aus<br>
 
 ##3. Disk (Parttion) der SD-Karte erweitern
 3.1 Partitionen ansehen mit <b>fdisk -l</b> (angezeigt wird mmcblk2p1, mmcblk2p2) <br>
@@ -113,8 +114,8 @@ vpack-version: 0.1.30<br>
 zlib-version: 1.2.8<br><br>
 
 11.2 Test mit <b>make examples</b><br>
-Nach der Kompilierung kann das ERgebniss mit <b>make examples</b> getestet werden.<br>
-Dae Ergebniss kann unter dem Link ansehen:<br> 
+Nach der erfolgreichen Kompilierung mit <b>make -j4</b> kann ArangoDB mit <b>make examples</b> getestet werden.<br>
+Dae Ergebniss kann man unter dem Link ansehen:<br> 
 <https://github.com/servusoft/arangodb3/blob/master/make_examples.txt>
 
 
