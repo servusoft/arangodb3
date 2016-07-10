@@ -9,8 +9,8 @@
 ##2. Arbeit an dem Board<vr>
 Es direkt an dem Board per LXTerminal gearbeitet werden, jedoch von  Vorteil ist die Arbeit mit einem SSH Client (z.B.putty)<br>
 2.1 Putty starten und einlogen mit <br>
- [putty] <b>ubuntu@wandboard</b> (User:<b>ubuntur</b> Pass:<b>ubuntu</b>, Rechnername <b>wandboard</b>) <br>
-2.2 <b>root</b> werden mit <b>su</b> -> pass:<b>root</b><br> 
+ [putty] <b>ubuntu@wandboard</b> (User:<b>ubuntur</b> Password:<b>ubuntu</b>, Rechnername <b>wandboard</b>) <br>
+2.2 <b>root</b> werden mit <b>su</b> -> Password:<b>root</b><br> 
 Für die Kompilirung reicht <b>ubuntu</b>-user aus<br>
 
 ##3. Disk (Parttion) der SD-Karte erweitern
