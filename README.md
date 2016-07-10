@@ -60,6 +60,7 @@ Der ARM-Compiler kann diese Option nicht "verdauen". <br>
 Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links dazu:<br> 
 <https://github.com/facebook/rocksdb/pull/964><br>
 <https://github.com/facebook/rocksdb/issues/810><br>
+<https://github.com/facebook/rocksdb/blob/master/Makefile#L79><br>
 
 ##7. Fehlenden Header für ARM-Platform anpassen
 7.1 Datei <b>ArangoGlobalContext.h</b> öffnen mit z.B. nano-Eritor: <br>
