@@ -84,8 +84,42 @@ Mit <b>make -j4</b> (bei Wandboard Quad-Version, dauert etwa 3 Stunden)<br>
 Nach dem Ablauf könnte ArangoDB in einem beliegeigen Ort getesten werden dazu werden zwei Ordner benötigt:
 
 ##11. Tests 
-Zum Testen erforderlich sind zwei Ordner aus der Repository:
-Das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test</b> und 
+
+11.1 Der einfache Test der Version mit <b>./bin/arangod --version</b> liefert folgende Werte:<br>
+3.0.1<br>
+architecture: 32bit<br>
+asan: false<br>
+asm-crc32: false<br>
+boost-version: 1.61.0b1<br>
+build-date: 2016-07-06 20:37:07<br>
+compiler: gcc<br>
+cplusplus: 201103<br>
+endianness: little<br>
+fd-client-event-handler: poll<br>
+fd-setsize: 1024<br>
+icu-version: 54.1<br>
+jemalloc: false<br>
+libev-version: 4.22<br>
+maintainer-mode: false<br>
+openssl-version: OpenSSL 1.0.2h  3 May 2016<br>
+rocksdb-version: 4.8.0<br>
+server-version: 3.0.1<br>
+sizeof int: 4<br>
+sizeof void*: 4<br>
+sse42: false<br>
+tcmalloc: false<br>
+v8-version: 5.0.71.39<br>
+vpack-version: 0.1.30<br>
+zlib-version: 1.2.8<br><br>
+
+11.2 Test mit <b>make examples</b><br>
+Nach der Kompilierung kann das ERgebniss mit <b>make examples</b> getestet werden.<br>
+Dae Ergebniss kann unter dem Link ansehen:<br> 
+<https://github.com/servusoft/arangodb3/blob/master/make_examples.txt>
+
+
+11.3 Zum Testen in einem beliebigen Ort sind zwei Ordner aus der Repository erforderlich:<br>
+Das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test</b> und<br> 
 die das erstellte <b>./build/bin</b>, kopieren ebenso in <b>/home/test</b><br>
 ArangoDB benötigt noch ein paar weitere Ordner. <br>
 ArangoDB sollte unter benutzer <b>arangodb</b> ausgeführt werden. <br>
@@ -121,32 +155,7 @@ Gestartet wird es mit: <br>
 <b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b><br>
 Es kann ebanfalls Datei (z.B. run* mit Ausführungsrechten) erstellt werden.<br>
 
-Der einfache Test der Version mit <b>./bin/arangod --version</b> liefert folgende Werte:<br>
-3.0.1<br>
-architecture: 32bit<br>
-asan: false<br>
-asm-crc32: false<br>
-boost-version: 1.61.0b1<br>
-build-date: 2016-07-06 20:37:07<br>
-compiler: gcc<br>
-cplusplus: 201103<br>
-endianness: little<br>
-fd-client-event-handler: poll<br>
-fd-setsize: 1024<br>
-icu-version: 54.1<br>
-jemalloc: false<br>
-libev-version: 4.22<br>
-maintainer-mode: false<br>
-openssl-version: OpenSSL 1.0.2h  3 May 2016<br>
-rocksdb-version: 4.8.0<br>
-server-version: 3.0.1<br>
-sizeof int: 4<br>
-sizeof void*: 4<br>
-sse42: false<br>
-tcmalloc: false<br>
-v8-version: 5.0.71.39<br>
-vpack-version: 0.1.30<br>
-zlib-version: 1.2.8<br>
+
 
 #Cross-Compiling unter Ubuntu/Debian
 
