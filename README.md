@@ -1,5 +1,5 @@
 #Build ArangoDB auf Wandboard
-Wandboard kann bei <http://wandboard.org/index.php/buy> bestellt werden.<br>
+Wandboard kann über <http://wandboard.org/index.php/buy> bestellt werden.<br>
 Der direkte Link ist z.B.:<br>
 Mouser : <http://www.mouser.de/ProductDetail/Wandboard/WBQUAD/><br>
 Texim <https://www.texim-europe.com/wandboard_order.aspx><br>
