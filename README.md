@@ -1,15 +1,15 @@
 #Build ArangoDB auf Wandboard
 ##1. WandBoard-Image mit Ubuntu erstellen 
-1.1 Ubuntu-Image <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/wandboard-all-ubuntu-16.04-sdcard-20160525.zip> von  <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/> herunterladen <br>
+1.1 Ubuntu-Image <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/wandboard-all-ubuntu-16.04-sdcard-20160525.zip> von  <http://download.wandboard.org/> herunterladen <br>
 1.2 WB-Image auf MicroSD schreiben (min 8 GB)  <br>
 1.3 MicroSD in WB platzieren (Slot auf Prozessor-Platine) <br>
 1.4 Monitor (HDMI), Tastatur und Maus (USB) anschliessen <br>
 1.5 Wandboard booten <br>
-Es direkt an dem Board per LXTerminal gearbeitet werden, jedoch von  Vorteil ist die Arbeit mit einem SSH Client (z.B.putty)<br>
 
-##2. Per ssh (putty) auf Wandboard einloggen <br>
+##2. Arbeit an dem Board<vr>
+Es direkt an dem Board per LXTerminal gearbeitet werden, jedoch von  Vorteil ist die Arbeit mit einem SSH Client (z.B.putty)<br>
 2.1 Putty starten und einlogen mit <br>
- putty <b>ubuntu@wandboard</b> (User:<b>ubuntur</b> Pass:<b>ubuntu</b>, Rechnername <b>wandboard</b>) <br>
+ [putty] <b>ubuntu@wandboard</b> (User:<b>ubuntur</b> Pass:<b>ubuntu</b>, Rechnername <b>wandboard</b>) <br>
 2.2 <b>root</b> werden mit <b>su</b> -> pass:<b>root</b><br> 
 Für die Kompilirung reicht <b>ubuntu</b>-user aus<br>
 
