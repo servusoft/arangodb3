@@ -1,5 +1,6 @@
 #Build ArangoDB auf Wandboard
-Wandboard kann z.B. bei mouser bestellt werden: <http://www.mouser.de/ProductDetail/Wandboard/WBQUAD/><br>
+Wandboard kann bei <http://wandboard.org/index.php/buy> bestellt werden.<br>
+Der direkte Link bei Mouser ist: <http://www.mouser.de/ProductDetail/Wandboard/WBQUAD/><br>
 ##1. WandBoard-Image mit Ubuntu erstellen 
 1.1 Ubuntu-Image <http://download.wandboard.org/wandboard-imx6/ubuntu-16.04/wandboard-all-ubuntu-16.04-sdcard-20160525.zip> von  <http://download.wandboard.org/> herunterladen <br>
 1.2 WB-Image auf MicroSD schreiben (min 8 GB)  <br>
