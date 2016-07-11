@@ -248,6 +248,6 @@ Wärend bei nativen Komilierung auf Wandboard tretten keine Feheler auf, <br>
 schlägt die Cross-Komilirung an dem o.g. Compiler-Schlater fehl.<br>
 (Für arm-linux-gnueabihf-g++ Compiler/Linker unbekannt). <br>
 Das Problem tritt nur mit ICU-Modul (Bestandteit V8) auf unter:<br> 
-<b>arangodb/3rdParty/V8/V8-5.0.71.39/third_party/icu</b>
+<b>arangodb/3rdParty/V8/V8-5.0.71.39/third_party/icu</b><br>
 Es liegt wohl daran, dass die Erkennung des Plattforms bei Cross-Comilier (noch) nicht perfekt ist.
 
