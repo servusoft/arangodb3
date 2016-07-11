@@ -9,6 +9,10 @@ Texim <https://www.texim-europe.com/wandboard_order.aspx><br>
 1.3 MicroSD in WB platzieren (Slot auf Prozessor-Platine) <br>
 1.4 Monitor (HDMI), Tastatur und Maus (USB) anschliessen <br>
 1.5 Wandboard booten <br>
+Linx liefert Werkzeuge, die Erstellen einer SD-Karte ermöglicht.<br> 
+Unter Windows könnte folgende Anwendungen verwendet werden:<br>
+<b>SDFormatter.exe</b> - SD Karte formatieren: <https://www.sdcard.org/downloads/><br>
+<b>Win32DiskImager.exe</b> - SD Karte beschreiben: <http://sourceforge.net/projects/win32diskimager/><br>
 
 
 ##2. Arbeit an dem Board<vr>
@@ -19,6 +23,8 @@ Es direkt an dem Board per LXTerminal gearbeitet werden, jedoch von  Vorteil ist
 Für die Kompilirung reicht <b>ubuntu</b>-user aus<br>
 
 ##3. Disk (Parttion) der SD-Karte erweitern
+Der 
+
 3.1 Partitionen ansehen mit <b>fdisk -l</b> (angezeigt wird mmcblk2p1, mmcblk2p2) <br>
 3.2 Editor starten mit <b>fdisk mmcblk2</b> <br>
 3.3 Partition erstellen mit "n" Enter, Enter,... (Default-Werte) <br>
