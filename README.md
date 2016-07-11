@@ -23,8 +23,7 @@ Es direkt an dem Board per LXTerminal gearbeitet werden, jedoch von  Vorteil ist
 Für die Kompilirung reicht <b>ubuntu</b>-user aus<br>
 
 ##3. Disk (Parttion) der SD-Karte erweitern
-Der 
-
+Die erstellte SD Karte wird nicht 100% verwendet. Damit der freie Platz auch verwendet werden kann, sind einie Anpassungen weforderlich.<br>
 3.1 Partitionen ansehen mit <b>fdisk -l</b> (angezeigt wird mmcblk2p1, mmcblk2p2) <br>
 3.2 Editor starten mit <b>fdisk mmcblk2</b> <br>
 3.3 Partition erstellen mit "n" Enter, Enter,... (Default-Werte) <br>
