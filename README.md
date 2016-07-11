@@ -39,7 +39,7 @@ Die erstellte SD Karte wird nicht 100% verwendet. Damit der freie Platz auch ver
 
 ##4. Entwiklungsumgebung anpassen
 Die erforderliche Anwendungen sind bereits installiert, jedoch zur Kontrolle sollten installiert oder geprüfrt werden<br>
-// System auf dem neisten Stand bringen<br>
+// System auf dem neusten Stand bringen<br>
 <b>sudo apt-get update -y</b>
 <b>sudo apt-get upgrade -y</b>
 // Git<br>
