@@ -122,12 +122,19 @@ zlib-version: 1.2.8<br><br>
 11.2 Test mit <b>make examples</b><br>
 Nach der erfolgreichen Kompilierung mit <b>make -j4</b> kann ArangoDB mit <b>make examples</b> getestet werden.<br>
 Dae Ergebniss kann man unter dem Link ansehen:<br> 
-<https://github.com/servusoft/arangodb3/blob/master/make_examples.txt>
+<https://github.com/servusoft/arangodb3/blob/master/make_examples.txt><br> 
+Der Test kann auch direkt mit <b>./utils/generateExamples.sh</b> aufgerufen werden.<br> 
+Damit alle Ergebnisse in eine Datei umgeleitet werden könnte folgende Syntax verwendet werden:<br> 
+<b>./utils/generateExamples.sh 1>&2>test.out</b><br><br>
 
+11.3 <b>Interne Tests</b><br>
+<b>./build/tests/basics_suite</b><br>
+<b>./build/tests/geo_suite</b><br><br>
 
-11.3 Zum Testen in einem beliebigen Ort sind zwei Ordner aus der Repository erforderlich:<br>
+11.4 Zum Statter des ArangoDB Servers in einem beliebigen Ort (Ordener) sind einige Ordner aus der Repository erforderlich:<br>
 Das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test</b> und<br> 
-die das erstellte <b>./build/bin</b>, kopieren ebenso in <b>/home/test</b><br>
+und das erstellte Ordner <b>./build/bin</b>, kopieren in <b>/home/test</b><br>
+Auch der Ordner mit Config-Dateien sollte nicht fehlen:<b>./etc</b>, kopieren ebenso in <b>/home/test</b><br>
 ArangoDB benötigt noch ein paar weitere Ordner. <br>
 ArangoDB sollte unter benutzer <b>arangodb</b> ausgeführt werden. <br>
 Dazu sind einige Anpassungen erforderlich: (Als bash-Schript oder einzeln in Test Ordner (/home/test) ausführen)<br>
@@ -159,10 +166,11 @@ path = ./temp<br>
 <br>
 
 Gestartet wird es mit: <br>
-<b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b><br>
+<b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b> oder <br>
+<b>sudo -u arangodb ./bin/arangod -c ./etc/arangod.conf</b> (Standard Einstallungen) <br>
 Es kann ebanfalls Datei (z.B. run* mit Ausführungsrechten) erstellt werden.<br>
-
-
+Der ausgelagerte <b>apps</b> ist von Vorteil, so dass <b>arangodb</b>Benutzer schreiben kann.<br>
+Der Orner <b>./js</b> kann schreibgechützt bleiben, was für eine bessere Sicherheit des SWystems sorgen kann.<br>
 
 #Cross-Compiling unter Ubuntu/Debian
 
