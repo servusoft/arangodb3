@@ -40,14 +40,14 @@ Die erstellte SD Karte wird nicht 100% verwendet. Damit der freie Platz auch ver
 ##4. Entwiklungsumgebung anpassen
 Die erforderliche Anwendungen sind bereits installiert, jedoch zur Kontrolle sollten installiert oder geprüfrt werden<br>
 // System auf dem neusten Stand bringen<br>
-<b>sudo apt-get update -y</b>
-<b>sudo apt-get upgrade -y</b>
+<b>sudo apt-get update -y</b><br>
+<b>sudo apt-get upgrade -y</b><br>
 // Git<br>
-<b>sudo apt-get install git</b>
-//Compiler<rb>
-<b>sudo apt-get install cmake make build-essential openssl python2.7 g++ gcc</b>
-//SSL, Devel-Version 
-<b>sudo apt-get install libssl-dev</b>
+<b>sudo apt-get install git</b><br>
+//Compiler<br>
+<b>sudo apt-get install cmake make build-essential openssl python2.7 g++ gcc</b><br>
+//SSL, Devel-Version <br>
+<b>sudo apt-get install libssl-dev</b><br>
 
 ##5. ArangoDB Clonen
 <b>mkdir /mnt/wb/adb3</b> <br>
