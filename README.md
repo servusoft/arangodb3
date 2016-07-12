@@ -104,7 +104,7 @@ Auch nach dem Neustart werden Änderungen wirksam.<br>
 Geprüft kann es mit <b>df -lH</b> wo <b>/var/tmp</b> als <b>tmpfs</b> erkennbar ist:<br>
 tmpfs            1.0G       0   1.0G   0% /var/tmp<br>
 Standardmäßig werden bis zu 50% des RAM-Speichers als RAM-Disk verwendet.<br> 
-Angepasst werden kann es mit:<br>
+Angepasst werden kann es in <b>/etc/fstab</b> mit:<br>
 <b>tmpfs			/var/tmp tmpfs	nosuid,size=33%	0	0	</b><br>
 wo #33% des RAMs	verwendet wird.
 
