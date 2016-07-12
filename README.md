@@ -33,7 +33,7 @@ Die erstellte SD Karte wird nicht 100% verwendet. Damit der freie Platz auch ver
 3.7 Auf der Partitionen Datei-System <b>ext4</b> erstellen mit: <b>mkfs.ext4 /dev/mmcblk2p3</b> <br>
 3.8 Partition <b>mmcblk2p3</b> mounten unter z.B. <b>/mnt/wb:</b> <br>
  <b>mkdir /mnt/wb</b> <br>
- <b>mount /dev/mmcblk2p3 /mnt/wb</> <br>
+ <b>mount /dev/mmcblk2p3 /mnt/wb</b> <br>
 3.9 Die Patition eventuell in <b>/etc/fstab</b> permanent eintragen: <br>
  <b>/dev/mmcblk2p3  /mnt/wb  ext4  defaults  0 1</b>
 
