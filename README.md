@@ -125,7 +125,7 @@ vpack-version: 0.1.30<br>
 zlib-version: 1.2.8<br><br>
 
 11.2 Test mit <b>unittests</b><br>
-Nach der erfolgreichen Kompilierung mit <b>make -j4</b> kann ArangoDB mit Hilfe eines integrierten Test-Fameworks getestet werden.<br>
+Nach der erfolgreichen Kompilierung mit <b>make -j4</b> kann ArangoDB mit Hilfe eines integrierten Test-Fameworks getestet werden.
 Dieses kann mit <b>./scripts/unittest all</b> aufgerufen werden.<br>
 Aufruf <b>./scripts/unittest</b> ohne Parameter listet alle verfügbate Tests auf.<br>
 Die Tests können auch einzeln aufgerufen werden. Beispiele:<br>
