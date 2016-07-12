@@ -97,9 +97,9 @@ Die Komilierung kann ein wenig optimiert weren. Wenn Der Compiler legt die Datei
 <b>tmpfs /var/tmp tmpfs  defaults 0 0</b><br>
 Danach es ist erforderlich die TMPDIR Variafle anzupassen:<br>
 <b>export TMPDIR=/var/tmp</b><br>
-Sollte ein Problem wegen Speichrmangael auftraten, so kann Temp-Ordner auf Standart-Ordner angepasst werden;<br>
+Sollte ein Problem wegen Speichrmangael (z.B. bei Testen von ArangoDB) auftreten, so kann der Temp-Ordner auf Standart-Wert (/tmp/) angepasst werden;<br>
 <b>export TMPDIR=/tmp</b><br><br>
-Damit "/var/tmp" tatsächlich ein RAM-Disk wird, es ist ein Neustart erforderlich.
+Damit "/var/tmp/" tatsächlich ein RAM-Disk wird, es ist ein Neustart erforderlich.
 
 ##11. Tests 
 
