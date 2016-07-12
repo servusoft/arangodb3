@@ -99,7 +99,10 @@ Danach es ist erforderlich die TMPDIR Variafle anzupassen:<br>
 <b>export TMPDIR=/var/tmp</b><br>
 Sollte ein Problem wegen Speichrmangael (z.B. bei Testen von ArangoDB) auftreten, so kann der Temp-Ordner auf Standart-Wert (/tmp/) angepasst werden;<br>
 <b>export TMPDIR=/tmp</b><br><br>
-Damit "/var/tmp/" tatsächlich ein RAM-Disk wird, es ist ein Neustart erforderlich.
+Damit "/var/tmp/" tatsächlich ein RAM-Disk wird, es ist ein Neustart erforderlich. <br>
+Geprüft kann es mit <b>df -l</b> wo <b>/var/tmp</b> als <b>tmpfs</b> erkennbar ist:<br>
+tmpfs            1033124       0   1033124   0% /var/tmp<br>
+
 
 ##11. Tests 
 
