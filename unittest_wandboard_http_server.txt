@@ -1,0 +1,1664 @@
+================================================================================
+Executing test http_server
+================================================================================
+
+up and running in 7.539638996124268 seconds
+
+Tue Jul 12 2016 12:38:05 GMT+0000 (UTC) rspec trying api-traversal-noncluster-spec.rb ...
+
+ArangoDB
+  running server-side traversals:
+    error checking
+      no direction, no expander
+      no graph
+      non-existing graph
+      no start vertex
+      non-existing start vertex
+      invalid direction
+      traversal exception
+      traversal abortion, few iterations
+      traversal abortion, many iterations
+    outbound traversals
+      visits nodes in a graph, outbound, pre-order, forward
+      visits nodes in a graph, outbound, pre-order, backward
+      visits nodes in a graph, outbound, post-order, forward
+      visits nodes in a graph, outbound, breadth-first pre-order, backward
+      visits nodes in a graph, outbound, breadth-first post-order, backward
+      visits nodes in a graph, outbound, minDepth 2
+      visits nodes in a graph, outbound, maxDepth 0
+      visits nodes in a graph, outbound, maxDepth 1
+      visits nodes in a graph, outbound, no connections
+    inbound traversals
+      visits nodes in a graph, inbound
+      visits nodes in a graph, inbound, no connections
+    using custom functions
+      visits nodes in a graph, own filter
+      visits nodes in a graph, own filter
+      visits nodes in a graph, custom init
+      visits nodes in a graph, own expander
+
+Finished in 33.89 seconds (files took 1.85 seconds to load)
+24 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 36.039270877838135
+
+Tue Jul 12 2016 12:38:41 GMT+0000 (UTC) rspec trying api-index-skiplist-spec.rb ...
+
+ArangoDB
+  creating skip-list index:
+    dealing with unique constraints violation:
+      does not create the index in case of violation
+      does not create the index in case of violation, null attributes
+      does not create the index in case of violation, sparse index
+      creates the index in case of null attributes, sparse index
+  creating documents:
+    dealing with unique constraints:
+      rolls back in case of violation
+      rolls back in case of violation, sparse index
+  updating documents:
+    dealing with unique constraints:
+      rolls back in case of violation
+      rolls back in case of violation, sparse index
+
+Finished in 34.7 seconds (files took 1.82 seconds to load)
+8 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 36.85202193260193
+
+Tue Jul 12 2016 12:39:18 GMT+0000 (UTC) rspec trying api-explain-spec.rb ...
+
+ArangoDB
+  dealing with explain:
+    error handling:
+      returns an error if body is missing
+      returns an error if collection is unknown
+      returns an error if bind variables are missing completely
+      returns an error if bind variables are required but empty
+      returns an error if bind variables are missing
+      returns an error if query contains a parse error
+    explaining queries:
+      explains a simple query
+
+Finished in 0.1097 seconds (files took 1.81 seconds to load)
+7 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.2475359439849854
+
+Tue Jul 12 2016 12:39:20 GMT+0000 (UTC) rspec trying api-index-spec.rb ...
+
+ArangoDB
+  dealing with indexes:
+    error handling:
+      returns an error if collection identifier is unknown
+      returns an error if index identifier is unknown
+    creating geo indexes:
+      returns either 201 for new or 200 for old indexes
+      creating geo index with location
+      creating geo index with location and geo-json = true
+      creating geo index with location and geo-json = false
+      creating geo index with latitude and longitude
+      creating geo index with constraint
+      creating geo index with constraint
+    geo indexes after unload/load:
+      survives unload
+    creating unique constraints:
+      returns either 201 for new or 200 for old indexes
+      returns either 201 for new or 200 for old indexes, sparse indexes
+    unique constraints after unload/load:
+      survives unload
+      survives unload, sparse index
+    creating hash indexes:
+      returns either 201 for new or 200 for old indexes
+      returns either 201 for new or 200 for old indexes, sparse index
+      returns either 201 for new or 200 for old indexes, mixed sparsity
+    hash indexes after unload/load:
+      survives unload
+      survives unload, sparse index
+    creating skiplists:
+      returns either 201 for new or 200 for old indexes
+      returns either 201 for new or 200 for old indexes, sparse index
+      returns either 201 for new or 200 for old indexes, mixed sparsity
+    skiplists after unload/load:
+      survives unload
+      survives unload, sparse index
+    creating unique skiplists:
+      returns either 201 for new or 200 for old indexes
+      returns either 201 for new or 200 for old indexes, sparse index
+    unique skiplists after unload/load:
+      survives unload
+      survives unload, sparse index
+    reading all indexes:
+      returns all index for a collection identifier
+      returns all index for a collection name
+    reading an index:
+      returns primary index for a collection identifier
+      returns primary index for a collection name
+    deleting an index:
+      deleting an index
+
+Finished in 13.09 seconds (files took 1.88 seconds to load)
+33 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 15.273196935653687
+
+Tue Jul 12 2016 12:39:35 GMT+0000 (UTC) rspec trying api-cursor-spec-noncluster.rb ...
+
+ArangoDB
+  testing the query cache:
+    testing without cache attribute set
+    testing explicitly disable cache
+    testing enabled cache
+    testing clearing the cache
+
+Finished in 0.1732 seconds (files took 1.8 seconds to load)
+4 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.2750229835510254
+
+Tue Jul 12 2016 12:39:38 GMT+0000 (UTC) rspec trying api-transactions-noncluster-spec.rb ...
+
+ArangoDB
+  running server-side transactions:
+    error handling:
+      returns an error if a wrong method type is used
+      returns an error if no body is posted
+      returns an error if no collections attribute is present
+      returns an error if the collections attribute has a wrong type
+      returns an error if collections sub-attribute is wrong
+      returns an error if no action is specified
+      returns an error if action attribute has a wrong type
+      returns an error if action attribute contains broken code
+      returns an error if action attribute contains broken code
+      returns an error if action attribute contains broken code
+      returns an error if transactions are nested
+      returns an error if transactions are nested
+    using wrong collections:
+      returns an error if referring to a non-existing collection
+      returns an error when using a non-declared collection
+      returns an error when using a collection in invalid mode
+      returns an error when using a collection in invalid mode
+      returns an error when using a disallowed operation
+    using parameters:
+      checking return parameters
+      checking return parameters, other argument name
+      checking return parameters, object
+      checking return parameters, object
+      checking return parameters, undefined
+      checking return parameters, undefined
+      checking return parameters, undefined
+    non-collection transactions:
+      returning a simple type
+      returning a compound type
+      returning an exception
+    single collection transactions:
+      read-only, using write
+      read-only, using read
+      committing
+      aborting
+    multi collection transactions:
+      read-only, using write
+      read-only, using read
+      committing
+      aborting
+
+Finished in 0.83935 seconds (files took 1.84 seconds to load)
+35 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.979444980621338
+
+Tue Jul 12 2016 12:39:41 GMT+0000 (UTC) rspec trying api-admin-spec.rb ...
+
+ArangoDB
+  dealing with the admin interface:
+    dealing with the routing
+      checks a simple routing
+    checks /_admin/echo
+      using GET
+      using GET, with query parameter
+      using POST, with query parameters
+      using PUT, with headers
+    dealing with the admin interface:
+      checks whether the admin interface is available at /_admin/aardvark/index.html
+      checks whether the admin interface is available at /
+      checks whether the admin interface is available at /_admin/html
+      checks whether the admin interface is available at /_admin/html/
+      checks whether the admin interface is available at /_admin/aardvark/
+
+Finished in 3.51 seconds (files took 1.8 seconds to load)
+10 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 5.618052005767822
+
+Tue Jul 12 2016 12:39:46 GMT+0000 (UTC) rspec trying api-documents-spec.rb ...
+
+ArangoDB
+  dealing with documents
+    creates a document with an invalid type
+    creates a document with an invalid type
+    updates a document with an invalid type
+    updates a document with an invalid type
+    replaces a document with an invalid type
+    replaces a document with an invalid type
+    updates documents by example with an invalid type
+    updates documents by example with an invalid type
+    replaces documents by example with an invalid type
+    replaces documents by example with an invalid type
+    removes a document with an invalid type
+
+Finished in 0.32602 seconds (files took 1.82 seconds to load)
+11 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.4509429931640625
+
+Tue Jul 12 2016 12:39:49 GMT+0000 (UTC) rspec trying api-users-spec.rb ...
+
+ArangoDB
+  user management:
+    reloads the user info
+    validating users
+      create a user and validate, empty password
+      create a user and validate
+      create a user and validate
+      create a user and validate, non-existing user
+      create a user and validate, invalid password
+      create a user and validate, invalid password
+    adding users
+      add user, no username
+      add user, empty username
+      add user, no passwd
+      add user, username and passwd
+      add user, username passwd, active, extra
+      add user, duplicate username
+    replacing users
+      replace, no user
+      replace non-existing user
+      replace already removed user
+      replace, empty body
+      replace existing user, no passwd
+      replace existing user
+    updating users
+      update, no user
+      update non-existing user
+      update already removed user
+      update, empty body
+      update existing user, no passwd
+      update existing user
+    removing users
+      remove, no user
+      remove non-existing user
+      remove already removed user
+      remove existing user
+    fetching users
+      fetches all users
+      fetches users, requires some created users
+      fetch non-existing user
+      fetch user
+
+Finished in 10.27 seconds (files took 1.87 seconds to load)
+33 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 12.45418381690979
+
+Tue Jul 12 2016 12:40:01 GMT+0000 (UTC) rspec trying api-aqlfunction-spec.rb ...
+
+ArangoDB
+  AQL user functions:
+    error handling
+      add function, without name
+      add function, invalid name
+      add function, invalid name
+      add function, invalid name
+      add function, no code
+      add function, invalid code
+      deleting non-existing function
+    adding and deleting functions
+      add function, valid code
+      add function, update
+      add function, delete
+      add function, delete multiple
+    retrieving functions
+      add function and retrieve the list
+      add functions and retrieve the list
+
+Finished in 0.32861 seconds (files took 1.81 seconds to load)
+13 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.446002960205078
+
+Tue Jul 12 2016 12:40:04 GMT+0000 (UTC) rspec trying api-traversal-edgecollection-noncluster-spec.rb ...
+
+ArangoDB
+  running server-side traversals:
+    error checking
+      no direction, no expander
+      no edge collection
+      non-existing edge collection
+      no start vertex
+      non-existing start vertex
+      invalid direction
+      traversal exception
+      traversal abortion, few iterations
+      traversal abortion, many iterations
+    outbound traversals
+      visits nodes in a graph, outbound, pre-order, forward
+      visits nodes in a graph, outbound, pre-order, backward
+      visits nodes in a graph, outbound, post-order, forward
+      visits nodes in a graph, outbound, breadth-first pre-order, backward
+      visits nodes in a graph, outbound, breadth-first post-order, backward
+      visits nodes in a graph, outbound, minDepth 2
+      visits nodes in a graph, outbound, maxDepth 0
+      visits nodes in a graph, outbound, maxDepth 1
+      visits nodes in a graph, outbound, no connections
+    inbound traversals
+      visits nodes in a graph, inbound
+      visits nodes in a graph, inbound, no connections
+    using custom functions
+      visits nodes in a graph, own filter
+      visits nodes in a graph, own filter
+      visits nodes in a graph, custom init
+      visits nodes in a graph, own expander
+
+Finished in 31.27 seconds (files took 1.84 seconds to load)
+24 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 33.42342495918274
+
+Tue Jul 12 2016 12:40:37 GMT+0000 (UTC) rspec trying api-index-hash-spec.rb ...
+
+ArangoDB
+  creating hash index:
+    dealing with unique constraints violation:
+      does not create the index in case of violation
+      does not create the index in case of violation, using null attributes
+      does not create the index in case of violation, sparse index
+      creates the index in case of null attributes, sparse index
+  creating documents:
+    dealing with unique constraints:
+      rolls back in case of violation
+      rolls back in case of violation, sparse index
+  updating documents:
+    dealing with unique constraints:
+      rolls back in case of violation
+      rolls back in case of violation, sparse index
+
+Finished in 16.08 seconds (files took 1.83 seconds to load)
+8 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 18.219110012054443
+
+Tue Jul 12 2016 12:40:55 GMT+0000 (UTC) rspec trying api-simple-modify-example-spec.rb ...
+
+ArangoDB
+  simple queries:
+    by-example query:
+      finds the examples
+      finds the first example, invalid collection
+    by-example query with skip:
+      finds the examples
+    remove-by-example query:
+      removes the examples
+      removes the examples, with limit
+    replace-by-example query:
+      replaces the examples
+      replaces the examples, with limit
+    update-by-example query:
+      updates the examples
+      updates the examples, with limit
+    update-by-example query, mergeObjects:
+      updates the example, empty update value
+      updates the example, mergeObjects not specified
+      updates the example, mergeObjects = true
+      updates the example, mergeObjects = false
+
+Finished in 2.11 seconds (files took 1.84 seconds to load)
+13 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 4.256407976150513
+
+Tue Jul 12 2016 12:40:59 GMT+0000 (UTC) rspec trying api-simple-example-spec.rb ...
+
+ArangoDB
+  simple queries:
+    by-example query:
+      finds the examples
+      finds the first example, invalid collection
+    by-example query with skip:
+      finds the examples
+
+Finished in 0.24952 seconds (files took 1.82 seconds to load)
+3 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.3759899139404297
+
+Tue Jul 12 2016 12:41:02 GMT+0000 (UTC) rspec trying api-simple-any-spec.rb ...
+
+ArangoDB
+  simple queries:
+    any query:
+      get any document, wrong collection
+      get any document, empty collection
+      get any document, single-document collection
+      get any document, non-empty collection
+
+Finished in 0.19699 seconds (files took 1.79 seconds to load)
+4 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.2965259552001953
+
+Tue Jul 12 2016 12:41:04 GMT+0000 (UTC) rspec trying api-document-delete-spec.rb ...
+
+ArangoDB
+  delete a document:
+    error handling:
+      returns an error if document handle is missing
+      returns an error if document handle is corrupted
+      returns an error if document handle is corrupted
+      returns an error if collection identifier is unknown
+      returns an error if document handle is unknown
+    deleting documents:
+      create a document and delete it
+      create a document and delete it, using if-match
+      create a document and delete it, using an invalid revision
+      create a document and delete it, waitForSync URL param = false
+      create a document and delete it, waitForSync URL param = true
+
+Finished in 0.60803 seconds (files took 1.81 seconds to load)
+10 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.722382068634033
+
+Tue Jul 12 2016 12:41:07 GMT+0000 (UTC) rspec trying api-document-update-spec.rb ...
+
+ArangoDB
+  update a document:
+    error handling:
+      returns an error if document handle is missing
+      returns an error if document handle is corrupted
+      returns an error if document handle is corrupted with empty cid
+      returns an error if collection identifier is unknown
+      returns an error if document handle is unknown
+      returns an error if the policy parameter is bad
+    updating document:
+      create a document and update it
+      create a document and update it, using if-match
+      create a document and update it, using an invalid revision
+      create a document and update it, waitForSync URL param=false
+      create a document and update it, waitForSync URL param=true
+      update a document, using patch
+      update a document, using patch, keepNull = true
+      update a document, using patch, keepNull = false
+
+Finished in 2.98 seconds (files took 1.84 seconds to load)
+14 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 5.134854793548584
+
+Tue Jul 12 2016 12:41:12 GMT+0000 (UTC) rspec trying api-export-spec-timecritical-noncluster.rb ...
+
+ArangoDB
+  dealing with exports:
+    error handling:
+      returns an error if collection is unknown
+      returns an error if cursor identifier is missing
+      returns an error if cursor identifier is invalid
+      returns an error if restrict has an invalid type
+      returns an error if restrict type is missing
+      returns an error if restrict type is invalid
+      returns an error if restrict fields are missing
+      returns an error if restrict fields are invalid
+    handling exports:
+      creates a cursor, single run
+      creates a cursor single run, without count
+      creates a cursor single run, larger batch size
+      creates a cursor
+      creates a cursor and deletes it in the middle
+      deleting a cursor
+      deleting a deleted cursor
+      deleting an invalid cursor
+      creates a cursor that will expire
+      creates a cursor that will not expire
+    handling bigger exports:
+      creates a cursor, single run
+      creates a cursor, multiple runs
+      consumes a cursor, while compaction is running
+      using limit
+      using limit == collection size
+      using limit > collection size
+    handling restrictions:
+      includes a single attribute
+      includes a few attributes
+      includes non-existing attributes
+      includes no attributes
+      excludes a single attribute
+      excludes a few attributes
+      excludes non-existing attributes
+      excludes no attributes
+
+Finished in 2 minutes 59.2 seconds (files took 1.84 seconds to load)
+32 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 181.3210690021515
+
+Tue Jul 12 2016 12:44:13 GMT+0000 (UTC) rspec trying api-edges-spec.rb ...
+
+ArangoDB
+  querying edges:
+    error handling:
+      returns an error if vertex-handle is missing
+      returns an error if vertex-handle is empty
+      returns an error if collection does not exist
+    known collection name:
+      creating an edge
+
+Finished in 0.84378 seconds (files took 1.8 seconds to load)
+4 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.944121837615967
+
+Tue Jul 12 2016 12:44:16 GMT+0000 (UTC) rspec trying api-document-read-spec.rb ...
+
+ArangoDB
+  reading a document:
+    error handling:
+      returns an error if document handle is corrupted
+      returns an error if document handle is corrupted with empty cid
+      returns an error if collection identifier is unknown
+      returns an error if document handle is unknown
+    reading a document:
+      create a document and read it
+      create a document and read it, using collection name
+      create a document and read it, use if-none-match
+      create a document and read it, use if-match
+    reading all documents:
+      get all documents of an empty collection
+      get all documents of an empty collection, using type=id
+      create three documents and read them using the collection identifier
+      create three documents and read them using the collection name
+      create three documents and read them using the collection name, type=id
+      create three documents and read them using the collection name, type=key
+    checking a document:
+      create a document and read it
+      use an invalid revision for HEAD
+
+Finished in 3.42 seconds (files took 1.83 seconds to load)
+16 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 5.565804958343506
+
+Tue Jul 12 2016 12:44:22 GMT+0000 (UTC) rspec trying api-batch-spec.rb ...
+
+ArangoDB
+  dealing with HTTP batch requests:
+    using disallowed methods:
+      checks whether GET is allowed on /_api/batch
+      checks whether HEAD is allowed on /_api/batch
+      checks whether DELETE is allowed on /_api/batch
+      checks whether PATCH is allowed on /_api/batch
+    checking wrong/missing content-type/boundary:
+      checks missing content-type
+      checks invalid content-type (xxx)
+      checks invalid content-type (json)
+      checks valid content-type with missing boundary
+      checks valid content-type with unexpected boundary
+      checks valid content-type with broken boundary
+      checks valid content-type with too short boundary
+    checking simple requests:
+      checks a multipart message assembled manually, broken boundary
+      checks a multipart message assembled manually, no boundary
+      checks a multipart message assembled manually
+      checks a multipart message assembled manually, with 404 URLs
+      checks an empty operation multipart message
+      checks a multipart message with a single operation
+      checks a multipart message with a multiple operations
+      checks a multipart message with many operations
+      checks a multipart message inside a multipart message
+      checks a few multipart messages inside a multipart message
+    checking batch document creation:
+      checks batch document creation
+    checking batch document creation with some errors:
+      checks batch document creation
+    checking batch document creation with non-existing collection:
+      checks batch document creation
+    checking content ids:
+      checks a multipart message with content-ids
+      checks a multipart message with identical content-ids
+      checks a multipart message with very different content-ids
+
+Finished in 0.80373 seconds (files took 1.85 seconds to load)
+27 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.960871934890747
+
+Tue Jul 12 2016 12:44:25 GMT+0000 (UTC) rspec trying api-document-key-spec.rb ...
+
+ArangoDB
+  testing keys:
+    returns an error if _key is null
+    returns an error if _key is a bool
+    returns an error if _key is a number
+    returns an error if _key is a number
+    returns an error if _key is a list
+    returns an error if _key is an object
+    returns an error if _key is empty string
+    returns an error if _key contains invalid characters
+    test valid key values
+    test duplicate key values
+
+Finished in 1.55 seconds (files took 1.82 seconds to load)
+10 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 3.6809279918670654
+
+Tue Jul 12 2016 12:44:28 GMT+0000 (UTC) rspec trying api-import-spec.rb ...
+
+ArangoDB
+  importing documents:
+    import, testing createCollection:
+      createCollection=false
+    import self-contained documents:
+      using different documents
+      using different documents, type=auto
+      using whitespace
+      invalid documents
+      empty body
+      no documents
+      no collection
+      non-existing collection
+    import self-contained documents:
+      using different documents
+      using different documents, type=auto
+      using whitespace
+      invalid documents
+      empty body
+      no documents
+      no collection
+      non-existing collection
+    import attribute names and data:
+      regular
+      using whitespace
+      invalid documents
+      missing header
+      wrong header
+      empty body
+      no documents
+      no collection
+      non-existing collection
+    import into an edge collection, using a JSON array:
+      no _from
+      no _to
+      with _from and _to
+      multiple docs, with _from and _to
+      multiple docs, with wrong fromPrefix
+      multiple docs, with wrong toPrefix
+      multiple docs, with fromPrefix
+      multiple docs, with toPrefix
+      multiple docs, with fromPrefix and toPrefix
+      multiple docs, with fromPrefix and toPrefix, double prefixing
+    import into an edge collection, using individual docs:
+      no _from
+      no _to
+      with _from and _to
+      multiple documents, with _from and _to
+    import into an edge collection, using CSV:
+      no _from
+      no _to
+      with _from and _to
+      multiple documents, with _from and _to
+    import with update:
+      using onDuplicate=error
+      using onDuplicate=error, without _key
+      using onDuplicate=error, mixed _keys
+      using onDuplicate=update
+      using onDuplicate=update, without _key
+      using onDuplicate=update, mixed _keys
+      using onDuplicate=replace
+      using onDuplicate=replace, without _key
+      using onDuplicate=replace, mixed _keys
+      using onDuplicate=ignore
+      using onDuplicate=ignore, without _key
+      using onDuplicate=ignore, mixed _keys
+
+Finished in 2.41 seconds (files took 1.87 seconds to load)
+56 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 4.590429782867432
+
+Tue Jul 12 2016 12:44:33 GMT+0000 (UTC) rspec trying api-collection-spec.rb ...
+
+ArangoDB
+  dealing with collections:
+    all collections:
+      returns all collections
+      returns all collections, exclude system collections
+    error handling:
+      returns an error if collection identifier is unknown
+      creating a collection without name
+      creating a collection with an illegal name
+      creating a collection with a duplicate name
+      creating a collection with an illegal body
+      creating a collection with a null body
+    reading:
+      finds the collection by identifier
+      finds the collection by name
+      checks the size of a collection
+      checks the properties of a collection
+      extracting the figures for a collection
+      extracting the revision id of a collection
+    deleting:
+      delete an existing collection by identifier
+      delete an existing collection by name
+    creating:
+      create a collection
+      create a collection, sync
+      create a collection, volatile
+      create a collection, invalid name
+      create a collection, already existing
+    loading:
+      load a collection by identifier
+      load a collection by name
+      load a collection by name with explicit count
+      load a collection by name without count
+    unloading:
+      unload a collection by identifier
+      unload a collection by name
+    truncating:
+      truncate a collection by identifier
+    properties:
+      changing the properties of a collection by identifier
+      create collection with explicit keyOptions property, traditional keygen
+      create a collection with isVolatile property
+      create collection with empty keyOptions property
+
+Finished in 42.44 seconds (files took 1.86 seconds to load)
+32 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 44.62083292007446
+
+Tue Jul 12 2016 12:45:18 GMT+0000 (UTC) rspec trying api-attributes-spec.rb ...
+
+ArangoDB
+  dealing with attribute names
+    creates a document with an empty attribute name
+    queries a document with an empty attribute name
+    creates a document with reserved attribute names
+    creates a document with nested attribute names
+    creates a document with duplicate attribute names
+    creates a document with nested duplicate attribute names
+
+Finished in 0.48258 seconds (files took 1.81 seconds to load)
+6 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.593628168106079
+
+Tue Jul 12 2016 12:45:20 GMT+0000 (UTC) rspec trying api-index-persistent-spec.rb ...
+
+ArangoDB
+  creating persistent index:
+    dealing with unique constraints violation:
+      does not create the index in case of violation
+      does not create the index in case of violation, null attributes
+      does not create the index in case of violation, sparse index
+      creates the index in case of null attributes, sparse index
+  creating documents:
+    dealing with unique constraints:
+      rolls back in case of violation
+      rolls back in case of violation, sparse index
+  updating documents:
+    dealing with unique constraints:
+      rolls back in case of violation
+      rolls back in case of violation, sparse index
+
+Finished in 31.1 seconds (files took 1.82 seconds to load)
+8 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 33.22815799713135
+
+Tue Jul 12 2016 12:45:54 GMT+0000 (UTC) rspec trying api-document-create-spec.rb ...
+
+ArangoDB
+  creating a document:
+    error handling:
+      returns an error if collection idenifier is missing
+      returns an error if the collection identifier is unknown
+      returns an error if the collection name is unknown
+      returns an error if the JSON body is corrupted
+      returns an error if an object sub-attribute in the JSON body is corrupted
+      returns an error if an array attribute in the JSON body is corrupted
+    known collection identifier, waitForSync = true:
+      creating a new document
+      creating a new document, setting compatibility header
+      creating a new document complex body
+      creating a new document complex body, setting compatibility header
+      creating a new umlaut document
+      creating a new umlaut document, setting compatibility header
+      creating a new not normalized umlaut document
+      creating a new not normalized umlaut document, setting compatibility header
+      creating a document with an existing id
+      creating a document with an existing id, setting compatibility header
+      creating a document with a duplicate existing id
+    known collection identifier, waitForSync = false:
+      creating a new document
+      creating a new document, setting compatibility header
+      creating a new document, waitForSync URL param = false
+      creating a new document, waitForSync URL param = false, setting compatibility header
+      creating a new document, waitForSync URL param = true
+      creating a new document, waitForSync URL param = true, setting compatibility header
+    known collection name:
+      creating a new document
+      creating a new document, setting compatibility header
+    unknown collection name:
+      returns an error if collection is unknown
+
+Finished in 4.02 seconds (files took 1.85 seconds to load)
+26 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 6.169830083847046
+
+Tue Jul 12 2016 12:46:00 GMT+0000 (UTC) rspec trying api-async-spec-timecritical.rb ...
+
+ArangoDB
+  dealing with async requests:
+    checks whether async=false returns status 202
+    checks whether async=true returns status 202
+    checks whether async=1 returns status 202
+    checks whether HEAD returns status 202
+    checks whether POST returns status 202
+    checks whether an invalid location returns status 202
+    checks whether a failing action returns status 202
+    checks the responses when the queue fills up
+    checks whether setting x-arango-async to 'store' returns a job id
+    checks whether job api returns 200 for ready job
+    checks whether job api returns 204 for non-ready job
+    checks whether job api returns 404 for non-existing job
+    checks whether job api returns done job in pending and done list
+    checks whether job api returns non-ready job in pending and done lists
+    checks whether we can cancel an AQL query
+    checks whether we can cancel an AQL query
+    checks whether we can cancel an AQL query
+    checks whether we can cancel a transaction
+
+Finished in 28.34 seconds (files took 1.83 seconds to load)
+18 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 30.480611085891724
+
+Tue Jul 12 2016 12:46:30 GMT+0000 (UTC) rspec trying api-cursor-spec.rb ...
+
+ArangoDB
+  dealing with cursors:
+    error handling:
+      returns an error if body is missing
+      returns an error if collection is unknown
+      returns an error if cursor identifier is missing
+      returns an error if cursor identifier is invalid
+    handling a cursor:
+      creates a cursor single run
+      creates a cursor single run, without count
+      creates a cursor single run, large batch size
+      creates a cursor
+      creates a cursor and deletes it in the middle
+      deleting a cursor
+      deleting a deleted cursor
+      deleting an invalid cursor
+      creates a cursor that will expire
+      creates a cursor that will not expire
+      creates a query that executes a v8 expression during query optimization
+      creates a query that executes a v8 expression during query execution
+      creates a query that executes a dynamic index expression during query execution
+      creates a query that executes a dynamic V8 index expression during query execution
+      creates a cursor with different bind values
+    checking a query:
+      valid query
+      invalid query
+    fetching floating-point values:
+      fetching via cursor
+
+Finished in 10.55 seconds (files took 1.83 seconds to load)
+22 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 12.690133810043335
+
+Tue Jul 12 2016 12:46:43 GMT+0000 (UTC) rspec trying api-database-spec.rb ...
+
+ArangoDB
+  dealing with database information methods:
+    retrieves the list of databases
+    retrieves the list of user-specific databases
+    retrieves information about the current database
+  dealing with database manipulation methods:
+    creates a new database
+    creates a database without a name
+    creates a database with an empty name
+    creates a database with an invalid name
+    re-creates an existing database
+    creates a database with users = null
+    creates a database with users = [ ]
+    drops an existing database
+    drops a non-existing database
+    creates a new database and retrieves the properties
+    creates a new database with two users
+    creates a new database with an invalid user object
+    creates a new database with an invalid user
+
+Finished in 5.51 seconds (files took 1.82 seconds to load)
+16 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 7.63730001449585
+
+Tue Jul 12 2016 12:46:51 GMT+0000 (UTC) rspec trying api-pipelining-spec-noncluster.rb ...
+
+ArangoDB
+  dealing with HTTP pipelining:
+    using direct handlers:
+      simple requests, no content-length
+      simple requests, with content-length
+      many requests
+    using indirect handlers:
+      checks post requests
+      checks post and get requests
+
+Finished in 8.19 seconds (files took 1.8 seconds to load)
+5 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 10.303047180175781
+
+Tue Jul 12 2016 12:47:01 GMT+0000 (UTC) rspec trying api-foxx-manager-spec.rb ...
+
+ArangoDB
+  Foxx Manager:
+    valid App
+Updated local repository information with 28 service(s)
+      should install from store
+      should install from github
+      should install from local
+
+Finished in 4.85 seconds (files took 1.8 seconds to load)
+3 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 6.961778879165649
+
+Tue Jul 12 2016 12:47:08 GMT+0000 (UTC) rspec trying api-import-noncluster-spec.rb ...
+
+ArangoDB
+  importing documents:
+    import with complete=true
+      regular
+
+Finished in 0.05234 seconds (files took 1.79 seconds to load)
+1 example, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.1385769844055176
+
+Tue Jul 12 2016 12:47:10 GMT+0000 (UTC) rspec trying api-simple-all-spec.rb ...
+
+ArangoDB
+  simple queries:
+    all query (will take a while when using ssl):
+      get all documents
+      get all documents with limit
+      get all documents with negative skip
+      get all documents with skip
+      get all documents with skip and limit
+
+Finished in 3.6 seconds (files took 1.8 seconds to load)
+5 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 5.696691989898682
+
+Tue Jul 12 2016 12:47:16 GMT+0000 (UTC) rspec trying api-http-spec.rb ...
+
+ArangoDB
+  binary data
+    checks handling of a request with binary data
+  dealing with timeouts:
+    calls an action and times out
+  dealing with read timeouts:
+    calls an action and times out
+  dealing with HTTP methods:
+    head requests:
+      checks whether HEAD returns a body on 2xx
+      checks whether HEAD returns a body on 3xx
+      checks whether HEAD returns a body on 4xx
+      checks whether HEAD returns a body on 4xx
+      checks whether HEAD returns a body on an existing document
+    get requests
+      checks a non-existing URL
+      checks whether GET returns a body
+      checks whether GET returns a body
+    options requests
+      checks handling of an OPTIONS request, without body
+      checks handling of an OPTIONS request, with body
+    gzip requests
+      checks handling of a request, with gzip support (FAILED - 1)
+      checks handling of an request, without gzip support (FAILED - 2)
+    CORS requests
+      checks handling of a non-CORS GET request
+      checks handling of a CORS GET request, with null origin
+      checks handling of a CORS GET request, with null origin
+      checks handling of a CORS GET request
+      checks handling of a CORS GET request
+      checks handling of a CORS POST request
+      checks handling of a CORS OPTIONS preflight request, no headers
+      checks handling of a CORS OPTIONS preflight request, empty headers
+      checks handling of a CORS OPTIONS preflight request, populated headers
+      checks handling of a CORS OPTIONS preflight request, populated headers
+      checks handling of a CORS GET request, with credentials
+      checks handling of a CORS GET request, with credentials disabled
+      checks handling of a CORS OPTIONS preflight request, with credentials
+
+Finished: TERMINATED exit code: 1 Time elapsed: 11.474478006362915
+Failed to parse rspec result: TypeError: Cannot read property 'duration' of undefined
+
+Tue Jul 12 2016 12:47:27 GMT+0000 (UTC) rspec trying api-simple-fulltext-spec.rb ...
+
+ArangoDB
+  simple queries:
+    fulltext query:
+      returns an error for fulltext query without query attribute
+      returns an error for fulltext query without an index
+      returns an error for fulltext query with a wrong index
+      returns documents for fulltext queries
+      returns documents for fulltext queries
+      returns documents for fulltext queries
+
+Finished in 0.39368 seconds (files took 1.8 seconds to load)
+6 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.4955708980560303
+
+Tue Jul 12 2016 12:47:30 GMT+0000 (UTC) rspec trying api-collection-noncluster-spec.rb ...
+
+ArangoDB
+  dealing with collections:
+    checksum:
+      calculating the checksum for a collection
+    properties:
+      create collection with explicit keyOptions property, autoinc keygen
+    renaming:
+      rename a collection by identifier
+      rename a collection by identifier with conflict
+      rename a new-born collection by identifier
+      rename a new-born collection by identifier with conflict
+
+Finished in 1.12 seconds (files took 1.82 seconds to load)
+6 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 3.249876022338867
+
+Tue Jul 12 2016 12:47:33 GMT+0000 (UTC) rspec trying api-aql-builtin-spec.rb ...
+
+ArangoDB
+  dealing with the builtin AQL functions:
+    fetches the list of functions
+
+Finished in 0.18193 seconds (files took 1.79 seconds to load)
+1 example, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.2810521125793457
+
+Tue Jul 12 2016 12:47:35 GMT+0000 (UTC) rspec trying api-query-analysis-spec-timecritical.rb ...
+
+ArangoDB
+  should activate Tracking
+  tracking
+    should track running queries
+    should track slow queries by threshold
+    should track at most n slow queries
+    should not track slow queries if turned off
+    should truncate the query string to at least 64 bytes
+    should truncate the query string
+    should properly truncate UTF8 symbols
+    should be able to kill a running query
+
+Finished in 20.6 seconds (files took 1.82 seconds to load)
+9 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 22.709086894989014
+
+Tue Jul 12 2016 12:47:58 GMT+0000 (UTC) rspec trying api-simple-geo-spec.rb ...
+
+ArangoDB
+  simple queries:
+    geo query:
+      returns an error for near without index
+      returns documents near a point
+      returns documents and distance near a point
+    geo query:
+      returns an error for within without index
+      returns documents within a radius
+      returns documents and distance within a radius
+
+Finished in 3.93 seconds (files took 1.82 seconds to load)
+6 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 6.0585620403289795
+
+Tue Jul 12 2016 12:48:04 GMT+0000 (UTC) rspec trying api-statistics-spec.rb ...
+
+ArangoDB
+  calculating statistics:
+    testing statistics-description correct cmd
+    testing statistics-description wrong cmd
+    testing statistics correct cmd
+    testing statistics wrong cmd
+
+Finished in 0.4539 seconds (files took 1.79 seconds to load)
+4 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.533431053161621
+
+Tue Jul 12 2016 12:48:06 GMT+0000 (UTC) rspec trying api-wal-noncluster-spec.rb ...
+
+ArangoDB
+  dealing with the wal API:
+    retrieves the WAL properties
+    manipulates the WAL properties
+
+Finished in 0.07371 seconds (files took 1.79 seconds to load)
+2 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 2.156805992126465
+
+Tue Jul 12 2016 12:48:09 GMT+0000 (UTC) rspec trying api-edge-spec.rb ...
+
+ArangoDB
+  creating an edge:
+    error handling:
+      returns an error if collection does not exist
+    known collection name:
+      creating an edge
+      using collection names in from and to
+      using collection ids in collection, from and to
+      creating an edge using keys
+      creating an edge using invalid keys
+    known collection name:
+      creating an edge, waitForSync URL param=false
+      creating an edge, waitForSync URL param=true
+
+Finished in 1.21 seconds (files took 1.81 seconds to load)
+8 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 3.330291986465454
+
+Tue Jul 12 2016 12:48:12 GMT+0000 (UTC) rspec trying api-simple-range-spec.rb ...
+
+ArangoDB
+  simple queries:
+    range query:
+      finds the examples
+      finds the examples, big result
+
+Finished in 2.85 seconds (files took 1.8 seconds to load)
+2 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 4.949458122253418
+
+Tue Jul 12 2016 12:48:17 GMT+0000 (UTC) rspec trying api-general-graph-spec.rb ...
+
+ArangoDB
+  with waitForSync = true
+    testing general graph methods:
+      check creation of graphs
+        can create an empty graph
+        can create a graph with definitions
+        can create a graph with orphan collections
+        can add additional edge definitions
+        can modify existing edge definitions
+        can delete an edge definition
+        can add an additional orphan collection
+        can delete an orphan collection
+        can delete a graph again
+        can not delete a graph twice
+        can not create a graph twice
+        can get a graph by name
+        can get a list of vertex collections
+        can get a list of edge collections
+      check vertex operations
+        can create a vertex
+        can get a vertex
+        can not get a non existing vertex
+        can replace a vertex
+        can not replace a non existing vertex
+        can update a vertex
+        can not update a non existing vertex
+        can delete a vertex
+        can not delete a non existing vertex
+      check edge operations
+        can create an edge
+        can get an edge
+        can not get a non existing edge
+        can replace an edge
+        can not replace a non existing edge
+        can update an edge
+        can not update a non existing edge
+        can delete an edge
+        can not delete a non existing edge
+      check error codes
+        should throw 404 if graph is unknown on route
+          get graph
+          delete graph
+          list edge collections
+          add edge definition
+          change edge definition
+          delete edge definition
+          list vertex collections
+          add vertex collection
+          delete vertex collection
+          create vertex
+          get vertex
+          update vertex
+          replace vertex
+          delete vertex
+          create edge
+          get edge
+          update edge
+          replace edge
+          delete edge
+        should throw 404 if collection is unknown on route
+          change edge definition
+          delete edge definition
+          delete vertex collection
+          create vertex
+          get vertex
+          update vertex
+          replace vertex
+          delete vertex
+          create edge
+          get edge
+          update edge
+          replace edge
+          delete edge
+        should throw 404 if document is unknown on route
+          get vertex
+          update vertex
+          replace vertex
+          delete vertex
+          get edge
+          update edge
+          replace edge
+          delete edge
+  with waitForSync = false
+    testing general graph methods:
+      check creation of graphs
+        can create an empty graph
+        can create a graph with definitions
+        can create a graph with orphan collections
+        can add additional edge definitions
+        can modify existing edge definitions
+        can delete an edge definition
+        can add an additional orphan collection
+        can delete an orphan collection
+        can delete a graph again
+        can not delete a graph twice
+        can not create a graph twice
+        can get a graph by name
+        can get a list of vertex collections
+        can get a list of edge collections
+      check vertex operations
+        can create a vertex
+        can get a vertex
+        can not get a non existing vertex
+        can replace a vertex
+        can not replace a non existing vertex
+        can update a vertex
+        can not update a non existing vertex
+        can delete a vertex
+        can not delete a non existing vertex
+      check edge operations
+        can create an edge
+        can get an edge
+        can not get a non existing edge
+        can replace an edge
+        can not replace a non existing edge
+        can update an edge
+        can not update a non existing edge
+        can delete an edge
+        can not delete a non existing edge
+      check error codes
+        should throw 404 if graph is unknown on route
+          get graph
+          delete graph
+          list edge collections
+          add edge definition
+          change edge definition
+          delete edge definition
+          list vertex collections
+          add vertex collection
+          delete vertex collection
+          create vertex
+          get vertex
+          update vertex
+          replace vertex
+          delete vertex
+          create edge
+          get edge
+          update edge
+          replace edge
+          delete edge
+        should throw 404 if collection is unknown on route
+          change edge definition
+          delete edge definition
+          delete vertex collection
+          create vertex
+          get vertex
+          update vertex
+          replace vertex
+          delete vertex
+          create edge
+          get edge
+          update edge
+          replace edge
+          delete edge
+        should throw 404 if document is unknown on route
+          get vertex
+          update vertex
+          replace vertex
+          delete vertex
+          get edge
+          update edge
+          replace edge
+          delete edge
+
+Finished in 8.96 seconds (files took 1.91 seconds to load)
+144 examples, 0 failures
+
+Finished: TERMINATED exit code: 0 Time elapsed: 11.186030149459839
+Shutting down...
+http://127.0.0.1:43126/_admin/shutdown
+1 arangods are still running...
+1 arangods are still running...
+1 arangods are still running...
+Server shutdown: Success.
+Found messages in the server logs: 
+log:
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR Cannot execute Foxx service at
+    /_admin/aardvark: ArangoError: failed to invoke module
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR File:
+    /mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/api-docs.json
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR Cause: SyntaxError:
+    /mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/api-docs.json:
+    Unexpected end of JSON input
+  - '2016-07-12T12:39:46Z [3264] ERROR     at Object.parse (native)'
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.Module._extensions..json
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:611:29)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/aardvark.js:42:18)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module._compile
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:586:8)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.Module._extensions..js
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:604:12)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:542:23)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/aardvark.js:42:18)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module._compile
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:586:8)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.Module._extensions..js
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:604:12)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/index.js:25:20)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR Cannot execute Foxx service at
+    /_admin/aardvark: ArangoError: failed to invoke module
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR File:
+    /mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/api-docs.json
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR Cause: SyntaxError:
+    /mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/api-docs.json:
+    Unexpected end of JSON input
+  - '2016-07-12T12:39:46Z [3264] ERROR     at Object.parse (native)'
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.Module._extensions..json
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:611:29)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/aardvark.js:42:18)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module._compile
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:586:8)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.Module._extensions..js
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:604:12)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:542:23)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/aardvark.js:42:18)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module._compile
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:586:8)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.Module._extensions..js
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:604:12)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:39:46Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/index.js:25:20)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR Cannot execute Foxx service at
+    /_admin/aardvark: ArangoError: failed to invoke module
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR File:
+    /mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/api-docs.json
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR Cause: SyntaxError:
+    /mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/api-docs.json:
+    Unexpected end of JSON input
+  - '2016-07-12T12:47:26Z [3264] ERROR     at Object.parse (native)'
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Object.Module._extensions..json
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:611:29)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/aardvark.js:42:18)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Module._compile
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:586:8)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Object.Module._extensions..js
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:604:12)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:542:23)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/aardvark.js:42:18)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Module._compile
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:586:8)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Object.Module._extensions..js
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:604:12)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Module.load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:539:36)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Function.Module._load
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:484:16)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at require
+    (/mnt/usb/run-dev/js/common/bootstrap/modules.js:95:21)
+  - >-
+    2016-07-12T12:47:26Z [3264] ERROR     at Object.<anonymous>
+    (/mnt/usb/run-dev/js/apps/system/_admin/aardvark/APP/index.js:25:20)
+  - >-
+    2016-07-12T12:47:48Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) RETURN x', took: 0.207334
+  - >-
+    2016-07-12T12:47:48Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) RETURN x', took: 0.205357
+  - >-
+    2016-07-12T12:47:48Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) RETURN x', took: 0.205371
+  - >-
+    2016-07-12T12:47:48Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) RETURN x', took: 0.205200
+  - >-
+    2016-07-12T12:47:49Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) RETURN x', took: 0.206292
+  - >-
+    2016-07-12T12:47:49Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) RETURN x', took: 0.205178
+  - >-
+    2016-07-12T12:47:49Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) RETURN x', took: 0.205214
+  - >-
+    2016-07-12T12:47:50Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) LET a = y LET b = a LET c = b L...', took: 0.207952
+  - >-
+    2016-07-12T12:47:50Z [3264] WARNING {queries} slow query: 'FOR x IN 1..1 LET
+    y = SLEEP(0.2) LET a= y LET b= a LET c= "\xC3\xB6\xC3\xB6...', took:
+    0.208054
+
+done.
+not cleaning up as some tests weren't successful:
+- /mnt/wb/tmp/arangosh_llDQIj/tmp-3258-2012570703/http_server
+
+================================================================================
+TEST RESULTS
+================================================================================
+
+* Test 'http_server'
+    [SUCCESS] api-traversal-noncluster-spec.rb
+    [SUCCESS] api-index-skiplist-spec.rb
+    [SUCCESS] api-explain-spec.rb
+    [SUCCESS] api-index-spec.rb
+    [SUCCESS] api-cursor-spec-noncluster.rb
+    [SUCCESS] api-transactions-noncluster-spec.rb
+    [SUCCESS] api-admin-spec.rb
+    [SUCCESS] api-documents-spec.rb
+    [SUCCESS] api-users-spec.rb
+    [SUCCESS] api-aqlfunction-spec.rb
+    [SUCCESS] api-traversal-edgecollection-noncluster-spec.rb
+    [SUCCESS] api-index-hash-spec.rb
+    [SUCCESS] api-simple-modify-example-spec.rb
+    [SUCCESS] api-simple-example-spec.rb
+    [SUCCESS] api-simple-any-spec.rb
+    [SUCCESS] api-document-delete-spec.rb
+    [SUCCESS] api-document-update-spec.rb
+    [SUCCESS] api-export-spec-timecritical-noncluster.rb
+    [SUCCESS] api-edges-spec.rb
+    [SUCCESS] api-document-read-spec.rb
+    [SUCCESS] api-batch-spec.rb
+    [SUCCESS] api-document-key-spec.rb
+    [SUCCESS] api-import-spec.rb
+    [SUCCESS] api-collection-spec.rb
+    [SUCCESS] api-attributes-spec.rb
+    [SUCCESS] api-index-persistent-spec.rb
+    [SUCCESS] api-document-create-spec.rb
+    [SUCCESS] api-async-spec-timecritical.rb
+    [SUCCESS] api-cursor-spec.rb
+    [SUCCESS] api-database-spec.rb
+    [SUCCESS] api-pipelining-spec-noncluster.rb
+    [SUCCESS] api-foxx-manager-spec.rb
+    [SUCCESS] api-import-noncluster-spec.rb
+    [SUCCESS] api-simple-all-spec.rb
+    [SUCCESS] api-simple-fulltext-spec.rb
+    [SUCCESS] api-collection-noncluster-spec.rb
+    [SUCCESS] api-aql-builtin-spec.rb
+    [SUCCESS] api-query-analysis-spec-timecritical.rb
+    [SUCCESS] api-simple-geo-spec.rb
+    [SUCCESS] api-statistics-spec.rb
+    [SUCCESS] api-wal-noncluster-spec.rb
+    [SUCCESS] api-edge-spec.rb
+    [SUCCESS] api-simple-range-spec.rb
+    [SUCCESS] api-general-graph-spec.rb
+    [FAILED]  api-http-spec.rb
+      'complete_api-http-spec.rb' failed: exit code was 1
+
+* Overall state: Fail
+   Suites failed: 1 Tests Failed: 1
