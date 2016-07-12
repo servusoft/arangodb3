@@ -124,27 +124,32 @@ v8-version: 5.0.71.39<br>
 vpack-version: 0.1.30<br>
 zlib-version: 1.2.8<br><br>
 
-11.2 Test mit <b>make examples</b><br>
-Nach der erfolgreichen Kompilierung mit <b>make -j4</b> kann ArangoDB mit <b>make examples</b> getestet werden.<br>
-Dae Ergebniss kann man unter dem Link ansehen:<br> 
-<https://github.com/servusoft/arangodb3/blob/master/make_examples.txt><br> 
-Der Test kann auch direkt mit <b>./utils/generateExamples.sh</b> aufgerufen werden.<br> 
-Damit alle Ergebnisse in eine Datei umgeleitet werden könnte folgende Syntax verwendet werden:<br> 
-<b>./utils/generateExamples.sh 1>&2>test.out</b><br><br>
+11.2 Test mit <b>unittests</b><br>
+Nach der erfolgreichen Kompilierung mit <b>make -j4</b> kann ArangoDB mit Hilfe eines integrierten Test-Fameworks getestet werden.<br>
+Dieses kann mit <b>./scripts/unittest all</b> aufgerufen werden.<br>
+Aufruf <b>./scripts/unittest</b> ohne Parameter listet alle verfügbate Tests auf.<br>
+Die Tests können auch einzeln aufgerufen werden. Beispiele:<br>
+<b>./scripts/unittest arangobench</b><br>  
+<b>./scripts/unittest stress_crud</b><br>
+<b>./scripts/unittest http_server</b><br>
+Das Ergebnis kann in eine Datei umgeleitet werden:<br>
+Dieses kann mit <b>./scripts/unittest all</b> aufgerufen werden.<br>
+<b>./scripts/unittest ssl_server 1>&2>unittest.out</b><br>  
+<b>./utils/generateExamples.sh 1>&2>test.out</b><br><br><br>
 
-11.3 <b>Interne Tests</b><br>
-<b>./build/tests/basics_suite</b><br>
-<b>./build/tests/geo_suite</b><br><br>
+Für http-Tests sind noch weitere Komponenten erfordserlich, die wie folgt installiert werden können:<br>
+<b>apt-get install ruby ruby-rspec ruby-httparty -y</b> - installiert Ruby<br>
+<b>apt-get install bundler -y</b> - Ruby Dependency Management<br>
+<b>gem install persistent_httparty</b> - installiert <b>persistent_httparty</b> für Ruby<br>
 
-11.4 Zum Statter des ArangoDB Servers in einem beliebigen Ort (Ordener) sind einige Ordner aus der Repository erforderlich:<br>
-Das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test</b> und<br> 
-und das erstellte Ordner <b>./build/bin</b>, kopieren in <b>/home/test</b><br>
-Auch der Ordner mit Config-Dateien sollte nicht fehlen:<b>./etc</b>, kopieren ebenso in <b>/home/test</b><br>
-ArangoDB benötigt noch ein paar weitere Ordner. <br>
-ArangoDB sollte unter benutzer <b>arangodb</b> ausgeführt werden. <br>
-Dazu sind einige Anpassungen erforderlich: (Als bash-Schript oder einzeln in Test Ordner (/home/test) ausführen)<br>
+11.4 Zum Starten des ArangoDB Servers in einem beliebigen Ort (Ordener) sind einige Ordner aus der Source-Repository erforderlich:<br>
+- das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test/js</b> und<br> 
+- das erstellte Ordner <b>./build/bin</b>, kopieren in <b>/home/test/bin</b><br>
+- auch der Ordner mit Config-Dateien sollte nicht fehlen:<b>./etc</b>, kopieren ebenso in <b>/home/test/etc</b><br>
+- ArangoDB benötigt noch ein paar weitere Ordner. <br>
+Dazu sind einige Anpassungen erforderlich: (Als bash-Schript oder einzeln in Test Ordner (/home/test) ausführen)<br><br>
 
-Datei cho* (mit Ausführungsrechten)
+Datei cho* (mit Ausführungsrechten)<br>
 adduser arangodb<br>
 mkdir apps<br>
 sudo chown arangodb:arangodb -R apps<br>
@@ -152,7 +157,7 @@ mkdir db<br>
 sudo chown arangodb:arangodb db<br>
 mkdir temp<br>
 sudo chown arangodb:arangodb temp<br>
-<br>
+<br><br>
 
 Weiterhin sollte die Datei <b>arangod.conf</b> erstellt und mit folgenden Inhalt befüllt werden:<br>
 
@@ -174,8 +179,10 @@ Gestartet wird es mit: <br>
 <b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b> oder <br>
 <b>sudo -u arangodb ./bin/arangod -c ./etc/arangod.conf</b> (Standard Einstallungen) <br>
 Es kann ebanfalls Datei (z.B. run* mit Ausführungsrechten) erstellt werden.<br>
+
+ArangoDB sollte unter dem Benutzer <b>arangodb</b> ausgeführt werden. <br>
 Der ausgelagerte <b>apps</b> ist von Vorteil, so dass <b>arangodb</b>Benutzer schreiben kann.<br>
-Der Orner <b>./js</b> kann schreibgechützt bleiben, was für eine bessere Sicherheit des SWystems sorgen kann.<br>
+Der Orner <b>./js</b> kann schreibgechützt bleiben, was für eine bessere Sicherheit des Systems sorgen kann.<br>
 
 #Cross-Compiling unter Ubuntu/Debian
 
