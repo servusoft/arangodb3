@@ -93,7 +93,13 @@ Hilfe und weitere Informationen unter:<br>
 
 ##10 Kompilierung 
 Mit <b>make -j4</b> (bei Wandboard Quad-Version, dauert etwa 3 Stunden)<br>
-Nach dem Ablauf könnte ArangoDB in einem beliegeigen Ort getesten werden dazu werden zwei Ordner benötigt:
+Die Komilierung kann ein wenig optimiert weren. Wenn Der Compiler legt die Dateien in einem temporären Ordner. Standartmäßig es ist <b>/tmp/</b>. Wenn der Temp-Ordner ein RAM-Dsik ist, wird die SD-Karte nicht beschrieben, sondern werden Datein in RAM-Speicher abgelegt. Erreicht wird es mit dem Eintrag in <b>/etc/fstab </b>:<br>
+<b>tmpfs /var/tmp tmpfs  defaults 0 0</b><br>
+Danach es ist erforderlich die TMPDIR Variafle anzupassen:<br>
+<b>export TMPDIR=/var/tmp</b><br>
+Sollte ein Problem wegen Speichrmangael auftraten, so kann Temp-Ordner auf Standart-Ordner angepasst werden;<br>
+<b>export TMPDIR=/tmp</b><br><br>
+Damit "/var/tmp" tatsächlich ein RAM-Disk wird, es ist ein Neustart erforderlich.
 
 ##11. Tests 
 
