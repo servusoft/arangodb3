@@ -99,10 +99,10 @@ Danach es ist erforderlich die TMPDIR Variafle anzupassen:<br>
 <b>export TMPDIR=/var/tmp</b><br>
 Sollte ein Problem wegen Speichrmangael (z.B. bei Testen von ArangoDB) auftreten, so kann der Temp-Ordner auf Standart-Wert (/tmp/) angepasst werden;<br>
 <b>export TMPDIR=/tmp</b><br><br>
-Damit "/var/tmp/" tatsächlich ein RAM-Disk wird, es ist ein Neustart erforderlich. <br>
-Geprüft kann es mit <b>df -l</b> wo <b>/var/tmp</b> als <b>tmpfs</b> erkennbar ist:<br>
-tmpfs            1033124       0   1033124   0% /var/tmp<br>
-
+Damit "/var/tmp/" tatsächlich ein RAM-Disk wird, muss <b>[sudo] mount -a </b> ausgeführt werden. 
+Auch nach dem Neustart werden Änderungen wirksam.<br>
+Geprüft kann es mit <b>df -lH</b> wo <b>/var/tmp</b> als <b>tmpfs</b> erkennbar ist:<br>
+tmpfs            1.0G       0   1.0G   0% /var/tmp<br>
 
 ##11. Tests 
 
@@ -181,8 +181,7 @@ level = info<br>
 [database]<br>
 directory = ./db<br>
 [temp]<br>
-path = ./temp<br>
-<br>
+path = ./temp<br><br>
 
 Gestartet wird es mit: <br>
 <b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b> oder <br>
