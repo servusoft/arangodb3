@@ -148,7 +148,6 @@ Die Tests können auch einzeln aufgerufen werden. Beispiele:<br>
 Das Ergebnis kann in eine Datei umgeleitet werden:<br>
 Dieses kann mit <b>./scripts/unittest all</b> aufgerufen werden.<br>
 <b>./scripts/unittest ssl_server 1>&2>unittest.out</b><br>  
-<b>./utils/generateExamples.sh 1>&2>test.out</b><br>
 
 Für http-Tests sind noch weitere Komponenten erfordserlich, die wie folgt installiert werden können:<br>
 <b>apt-get install ruby ruby-rspec ruby-httparty -y</b> - installiert Ruby<br>
