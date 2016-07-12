@@ -104,12 +104,12 @@ Damit "/var/tmp" tatsächlich ein RAM-Disk wird, es ist ein Neustart erforderlic
 ##11. Tests 
 
 11.1 Der einfache Test der Version mit <b>./bin/arangod --version</b> liefert folgende Werte:<br>
-3.0.1<br>
+
 architecture: 32bit<br>
 asan: false<br>
 asm-crc32: false<br>
 boost-version: 1.61.0b1<br>
-build-date: 2016-07-06 20:37:07<br>
+build-date: 2016-07-12 13:49:53<br>
 compiler: gcc<br>
 cplusplus: 201103<br>
 endianness: little<br>
@@ -121,14 +121,14 @@ libev-version: 4.22<br>
 maintainer-mode: false<br>
 openssl-version: OpenSSL 1.0.2h  3 May 2016<br>
 rocksdb-version: 4.8.0<br>
-server-version: 3.0.1<br>
+server-version: 3.0.2<br>
 sizeof int: 4<br>
 sizeof void*: 4<br>
 sse42: false<br>
 tcmalloc: false<br>
 v8-version: 5.0.71.39<br>
 vpack-version: 0.1.30<br>
-zlib-version: 1.2.8<br><br>
+zlib-version: 1.2.8<br>
 
 11.2 Test mit <b>unittests</b><br>
 Nach der erfolgreichen Kompilierung mit <b>make -j4</b> kann ArangoDB mit Hilfe eines integrierten Test-Fameworks getestet werden.
