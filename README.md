@@ -108,8 +108,9 @@ Standardmäßig werden bis zu 50% des RAM-Speichers als RAM-Disk verwendet.<br>
 Angepasst werden kann es in <b>/etc/fstab</b> mit:<br>
 <b>tmpfs			/var/tmp tmpfs	nosuid,size=33%	0	0	</b><br>
 wo #33% des RAMs	verwendet wird.<br>
-<b>umount /var/tmp</b> hängt den RAM-Disk wieder ab, was <b>df -lH</b> wo <b>/var/tmp</b> nicht mehr als tmpfs erscheint.<br>
 In dem Fall die Last auf der Kühler wird höher, da auch RAM-Chips gekühlt werden müssen, was mit <b>make -j4</b>  zu einer Überhitzung führen kann. In dem Fall wird das System gestoppt und ein Reset ist erforderlich. Um die Last zu reduziern könnte ein-zwei Kerne  weniger verwendet werden was mit <b>make -j3</b> oder <b>make -j2</b> erreicht wird.<br>
+Bei Bedarf kann der RAM-Disk mit <b>umount /var/tmp</b> deaktiviert werden, was nach <b>df -lH</b> erkennbar ist, wo <b>/var/tmp</b> nicht mehr als <b>tmpfs</b> erscheint.<br><br>
+
 Mit <b>make help</b> könne alle Ziele (Targers) aufgelistet werden. Ein paar sinnvolle davon sind:<be> 
 Mit <b>make package</b> - erstellt ein Package mit Binary-Daten<br>
 Mit <b>make package_source</b> - erstellt ein Package mit Quellcode, was z.B. bei Git hochgeladen werden kann.<br>
