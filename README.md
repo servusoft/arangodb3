@@ -218,17 +218,17 @@ Der Orner <b>./js</b> kann schreibgechützt bleiben, was für eine bessere Siche
 <b>export RANLIB=$CROSSTOOL-ranlib</b><br>
 <!--<b>export LINK=$CXX</b><br>-->
 
-##4. // check
+##4. // check<br>
 <b>$CC --version</b><br>
-=> arm-linux-gnueabi-gcc (Ubuntu/Linaro 5.3.1-14ubuntu2) 5.3.1 20160413
+=> arm-linux-gnueabi-gcc (Ubuntu/Linaro 5.3.1-14ubuntu2) 5.3.1 20160413<br>
 <b>$CXX --version</b><br>
-=> arm-linux-gnueabi-g++ (Ubuntu/Linaro 5.3.1-14ubuntu2) 5.3.1 20160413
+=> arm-linux-gnueabi-g++ (Ubuntu/Linaro 5.3.1-14ubuntu2) 5.3.1 20160413<br>
 
-##5. // get source (3.0)
+##5. // get source (3.0)<br>
 git clone - b 3.0 --single-branch --depth 1 git://github.com/arangodb/arangodb.git</b><br>
 
 ##6. // SSL für ARM-Platform compilieren<br>
-6.1 // Source holen
+6.1 // Source holen<br>
 <b>cd ./3rdParty</b><br>
 <b>mkdir openssl</b><br>
 <b>cd openssl</b><br>
