@@ -88,7 +88,8 @@ In gegebenem Fall es ist "/usr/local/ssl". Dadurch sollte es cmake mitgeteilt we
 <b>cmake -DOPENSSL_ROOT_DIR=/usr/local/ssl ..</b> <br>
 Hilfe und weitere Informationen unter:<br>
 <https://docs.arangodb.com/3.0/cookbook/Compiling/Debian.html><br>
-<http://jsteemann.github.io/blog/2016/06/02/compiling-arangodb-3-dot-0-on-ubuntu/>
+<http://jsteemann.github.io/blog/2016/06/02/compiling-arangodb-3-dot-0-on-ubuntu/><br>
+Mit <b>cmake -L</b> können alle zusätzliche Parameter angezeigt werden, die mit cmake verwendet werden können<br>
 
 
 ##10 Kompilierung 
@@ -108,7 +109,11 @@ Standardmäßig werden bis zu 50% des RAM-Speichers als RAM-Disk verwendet.<br>
 Angepasst werden kann es in <b>/etc/fstab</b> mit:<br>
 <b>tmpfs			/var/tmp tmpfs	nosuid,size=33%	0	0	</b><br>
 wo #33% des RAMs	verwendet wird.<br>
-In dem Fall die Last auf der Kühler wird höher, da auch RAM-Chips gekühlt werden müssen, was mit <b>make -j4</b>  zu einer Überhitzung führen kann. In dem Fall wird das System gestoppt und ein Reset ist erforderlich. Um die Last zu reduziern könnte ein-zwei Kerne  weniger verwendet werden was mit <b>make -j3</b> oder <b>make -j2</b> erreicht wird.
+In dem Fall die Last auf der Kühler wird höher, da auch RAM-Chips gekühlt werden müssen, was mit <b>make -j4</b>  zu einer Überhitzung führen kann. In dem Fall wird das System gestoppt und ein Reset ist erforderlich. Um die Last zu reduziern könnte ein-zwei Kerne  weniger verwendet werden was mit <b>make -j3</b> oder <b>make -j2</b> erreicht wird.<br>
+Mit <b>make help</b> könne alle Ziele (Targers) aufgelistet werden. Ein paar sinnvolle davon sind:<be> 
+Mit <b>make package</b> - erstellt ein Package mit Binary-Daten<br>
+Mit <b>make package_source</b> - erstellt ein Package mit Quellcode, was z.B. bei Git hochgeladen werden kann.<br>
+
 
 ##11. Tests 
 
@@ -256,11 +261,10 @@ cd .. // ArangoDB<br>
 <b>mkdir -p build</b><br>
 <b>cd build</b><br>
 
-<b>cmake \\</b><br>
+<b>cmake ..\\</b><br>
 <b>-DCROSS_COMPILING=true \\</b><br>
 <b>-DOPENSSL_ROOT_DIR=/opt/gnuarm \\</b><br>
-<b>-DCMAKE_TARGET_ARCHITECTURES==armv7 \\</b><br>
-<b>..</b><br>
+<b>-DCMAKE_TARGET_ARCHITECTURES=armv7</b><br>
 
 
 ##8 Problem mit -m32 und -m64 Schalter
