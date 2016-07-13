@@ -108,7 +108,7 @@ Standardmäßig werden bis zu 50% des RAM-Speichers als RAM-Disk verwendet.<br>
 Angepasst werden kann es in <b>/etc/fstab</b> mit:<br>
 <b>tmpfs			/var/tmp tmpfs	nosuid,size=33%	0	0	</b><br>
 wo #33% des RAMs	verwendet wird.<br>
-In dem Fall die Last auf der Kühler wird höher, da auch RAM-Chips gekühlt werden müssen, was mit <b>make -j4</b>  zu einer Überhitzung führen kann. In dem Fall wird das System gestoppt und ein Reser erforderlich. Um die Last zu reduziern könnte ein-zwei Kerne weniger <b>make -j3</b> oder <b>make -j2</b> helfen.
+In dem Fall die Last auf der Kühler wird höher, da auch RAM-Chips gekühlt werden müssen, was mit <b>make -j4</b>  zu einer Überhitzung führen kann. In dem Fall wird das System gestoppt und ein Reset ist erforderlich. Um die Last zu reduziern könnte ein-zwei Kerne  weniger verwendet werden was mit <b>make -j3</b> oder <b>make -j2</b> erreicht wird.
 
 ##11. Tests 
 
