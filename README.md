@@ -75,6 +75,8 @@ Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links d
  #include "Basics/FileUtils.h"<br>
  #endif<br>
 7.3 Änderingen speichern  <br>
+Anmerkung: Diese Anpassung ist aktuell nur für mit 3.0-Branch erforderlich.<br>
+In 3.0.x (devel) wurde die fehlende Header-Datei entsprechend eingebunden. 
 
 ##8. Angepasste Version clonen 
 Der Aufwand kann erspart werden, wenn die bereits angepasste Version geklont wird:<br>
