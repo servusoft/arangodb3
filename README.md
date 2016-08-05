@@ -107,46 +107,5 @@ Für http-Tests sind noch weitere Komponenten erfordserlich, die wie folgt insta
 <b>apt-get install bundler -y</b> - Ruby Dependency Management<br>
 <b>gem install persistent_httparty</b> - installiert <b>persistent_httparty</b> für Ruby<br>
 
-8.3 Zum Starten des ArangoDB Servers in einem beliebigen Ort (Ordener) sind einige Ordner aus der Source-Repository erforderlich:<br>
-- das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test/js</b> und<br> 
-- das erstellte Ordner <b>./build/bin</b>, kopieren in <b>/home/test/bin</b><br>
-- auch der Ordner mit Config-Dateien sollte nicht fehlen:<b>./etc</b>, kopieren ebenso in <b>/home/test/etc</b><br>
-- ArangoDB benötigt noch ein paar weitere Ordner. <br>
-Dazu sind einige Anpassungen erforderlich: (Als bash-Schript oder einzeln in Test Ordner (/home/test) ausführen)<br><br>
-
-Datei cho* (mit Ausführungsrechten)<br>
-adduser arangodb<br>
-mkdir apps<br>
-sudo chown arangodb:arangodb -R apps<br>
-mkdir db<br>
-sudo chown arangodb:arangodb db<br>
-mkdir temp<br>
-sudo chown arangodb:arangodb temp<br>
-<br><br>
-
-Weiterhin sollte die Datei <b>arangod.conf</b> erstellt und mit folgenden Inhalt befüllt werden:<br>
-
-[server]<br>
-authentication = false<br>
-endpoint = tcp://0.0.0.0:8529<br>
-[javascript]<br>
-startup-directory = ./js<br>
-app-path = ./apps<br>
-[log]<br>
-level = info<br>
-[database]<br>
-directory = ./db<br>
-[temp]<br>
-path = ./temp<br><br>
-
-Gestartet wird es mit: <br>
-<b>sudo -u arangodb ./bin/arangod --configuration ./arangod.conf</b> oder <br>
-<b>sudo -u arangodb ./bin/arangod -c ./etc/arangod.conf</b> (Standard Einstallungen) <br>
-Es kann ebanfalls Datei (z.B. run* mit Ausführungsrechten) erstellt werden.<br>
-
-ArangoDB sollte unter dem Benutzer <b>arangodb</b> ausgeführt werden. <br>
-Der ausgelagerte <b>apps</b> ist von Vorteil, so dass <b>arangodb</b>Benutzer schreiben kann.<br>
-Der Orner <b>./js</b> kann schreibgechützt bleiben, was für eine bessere Sicherheit des Systems sorgen kann.<br>
-
 #Cross-Compiling unter Ubuntu/Debian
 Weitere Infos unter: https://github.com/servusoft/arangodb3/blob/master/README_CROSS_COMPILING.md
