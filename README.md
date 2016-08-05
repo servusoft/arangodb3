@@ -52,39 +52,9 @@ Die erforderliche Anwendungen sind bereits installiert, jedoch zur Kontrolle sol
 ##5. ArangoDB Clonen
 <b>mkdir /mnt/wb/adb3</b> <br>
 <b>cd /mnt/wb/adb3</b> <br>
-<b>git clone --single-branch --depth 1 -b 3.0 git://github.com/arangodb/arangodb.git</b> <br>
+<b>git clone --single-branch --depth 1 git://github.com/arangodb/arangodb.git</b> <br>
 
-##6. RocksDB anpassung
-Wegen einem fest eingegebenen Schalter wird Fehler angezeigt: <br>
-<b>c++: error: unrecognized command line option '-momit-leaf-frame-pointer'</b> <br>
-Um das zu beheben wie folgt vorgehen: <br>
-6.1 Datei öffnen: <b>/3rdParty/rocksdb/rocksdb/CMakeLists.txt</b><br>
-6.2.Option finden und entfernen: <b>"-momit-leaf-frame-pointer"</b> in der Datei (kommt nur 1 mal vor)<br>
-6.3 Datei speichern<br>
-Der ARM-Compiler kann diese Option nicht "verdauen". <br>
-Eine Lösung wäre eine Erkennunt des Schalters von Comilers einzubauen. Links dazu:<br> 
-<https://github.com/facebook/rocksdb/pull/964><br>
-<https://github.com/facebook/rocksdb/issues/810><br>
-<https://github.com/facebook/rocksdb/blob/master/Makefile#L79><br>
-
-##7. Fehlenden Header für ARM-Platform anpassen
-7.1 Datei <b>ArangoGlobalContext.h</b> öffnen mit z.B. nano-Eritor: <br>
-<b>nano ./lib/Basics/ArangoGlobalContext.h</b> <br>
-7.2 hinter <b>#include "Basics/Common.h" </b> hinzufügen: <br>
- #ifdef \_\_arm\_\_<br>
- #include "Basics/FileUtils.h"<br>
- #endif<br>
-7.3 Änderingen speichern  <br>
-Anmerkung: Diese Anpassung ist aktuell nur für mit 3.0-Branch erforderlich.<br>
-In 3.0.x (devel) wurde die fehlende Header-Datei entsprechend eingebunden. 
-
-##8. Angepasste Version clonen 
-Der Aufwand kann erspart werden, wenn die bereits angepasste Version geklont wird:<br>
-<b>git clone -b 3.0-wandboard --single-branch --depth 1 git://github.com/servusoft/arangodb3.git</b> <br>
-<https://github.com/servusoft/arangodb3/tree/3.0-wandboard><br>
-Die Änderungen können unter <https://github.com/servusoft/arangodb3/blob/master/adb3.diff> angesehen werden<br>
-
-##9. cmake mit SSL Anpassung
+##6. cmake mit SSL Anpassung
 Bei der Installation mit <b>sudo apt-get install libssl-dev</b> kann auf ARM der SSL-Pfad von Standard abweichen.<br>
 In gegebenem Fall es ist "/usr/local/ssl". Dadurch sollte es cmake mitgeteilt werden:<br>
 <b>cmake -DOPENSSL_ROOT_DIR=/usr/local/ssl ..</b> <br>
@@ -94,7 +64,7 @@ Hilfe und weitere Informationen unter:<br>
 Mit <b>cmake -L</b> können alle zusätzliche Parameter angezeigt werden, die mit cmake verwendet werden können<br>
 
 
-##10 Kompilierung 
+##7 Kompilierung 
 Mit <b>make -j4</b> (bei Wandboard Quad-Version, dauert etwa 3 Stunden)<br>
 Die Komilierung kann ein wenig optimiert weren. Wenn Der Compiler legt die Dateien in einem temporären Ordner. Standartmäßig es ist <b>/tmp/</b>. Wenn der Temp-Ordner ein RAM-Dsik ist, wird die SD-Karte nicht beschrieben, sondern werden Datein in RAM-Speicher abgelegt. Erreicht wird es mit dem Eintrag in <b>/etc/fstab </b>:<br>
 <b>tmpfs /var/tmp tmpfs  defaults 0 0</b><br>
@@ -117,36 +87,10 @@ Mit <b>make help</b> könne alle Ziele (Targets) aufgelistet werden. Ein paar si
 <b>make package_source</b> - erstellt ein Package mit Quellcode, was z.B. bei Git hochgeladen werden kann.<br>
 
 
-##11. Tests 
+##8. Tests 
 
-11.1 Der einfache Test der Version mit <b>./bin/arangod --version</b> liefert folgende Werte:<br>
-
-architecture: 32bit<br>
-asan: false<br>
-asm-crc32: false<br>
-boost-version: 1.61.0b1<br>
-build-date: 2016-07-12 13:49:53<br>
-compiler: gcc<br>
-cplusplus: 201103<br>
-endianness: little<br>
-fd-client-event-handler: poll<br>
-fd-setsize: 1024<br>
-icu-version: 54.1<br>
-jemalloc: false<br>
-libev-version: 4.22<br>
-maintainer-mode: false<br>
-openssl-version: OpenSSL 1.0.2h  3 May 2016<br>
-rocksdb-version: 4.8.0<br>
-server-version: 3.0.2<br>
-sizeof int: 4<br>
-sizeof void*: 4<br>
-sse42: false<br>
-tcmalloc: false<br>
-v8-version: 5.0.71.39<br>
-vpack-version: 0.1.30<br>
-zlib-version: 1.2.8<br>
-
-11.2 Test mit <b>unittests</b><br>
+8.1 Der einfache Test der Version mit <b>./bin/arangod --version</b><br>
+8.2 Test mit <b>unittests</b><br>
 Nach der erfolgreichen Kompilierung mit <b>make -j4</b> kann ArangoDB mit Hilfe eines integrierten Test-Fameworks getestet werden.
 Dieses kann mit <b>./scripts/unittest all</b> aufgerufen werden.<br>
 Aufruf <b>./scripts/unittest</b> ohne Parameter listet alle verfügbate Tests auf.<br>
@@ -163,7 +107,7 @@ Für http-Tests sind noch weitere Komponenten erfordserlich, die wie folgt insta
 <b>apt-get install bundler -y</b> - Ruby Dependency Management<br>
 <b>gem install persistent_httparty</b> - installiert <b>persistent_httparty</b> für Ruby<br>
 
-11.4 Zum Starten des ArangoDB Servers in einem beliebigen Ort (Ordener) sind einige Ordner aus der Source-Repository erforderlich:<br>
+8.3 Zum Starten des ArangoDB Servers in einem beliebigen Ort (Ordener) sind einige Ordner aus der Source-Repository erforderlich:<br>
 - das vorhandene <b>./js</b>, kopieren in z.B. <b>/home/test/js</b> und<br> 
 - das erstellte Ordner <b>./build/bin</b>, kopieren in <b>/home/test/bin</b><br>
 - auch der Ordner mit Config-Dateien sollte nicht fehlen:<b>./etc</b>, kopieren ebenso in <b>/home/test/etc</b><br>
@@ -205,75 +149,4 @@ Der ausgelagerte <b>apps</b> ist von Vorteil, so dass <b>arangodb</b>Benutzer sc
 Der Orner <b>./js</b> kann schreibgechützt bleiben, was für eine bessere Sicherheit des Systems sorgen kann.<br>
 
 #Cross-Compiling unter Ubuntu/Debian
-
-##1. Compiler und  utils holen<br>
-<b>sudo apt-get install git</b><br>
-<b>sudo apt-get install cmake make build-essential openssl python2.7 g++ gcc</b><br>
-<b>sudo apt-get install libssl-dev</b><br>
-
-##2. Cross-Compiler tools holen
-<b>apt-get install arm-linux-gnueabihf*
-
-##3. Umgebung für Cross-Comiling anpassen
-<b>export MACHINE=armv7 \\</b><br>
-<b>export ARCH=arm \\</b><br><br>
-<b>export CROSSTOOL=arm-linux-gnueabihf</b><br>
-<b>export CXX=$CROSSTOOL-g++ \\</b><br>
-<b>export CC=$CROSSTOOL-gcc \\</b><br>
-<b>export AR=$CROSSTOOL-ar \\</b><br>
-<b>export AS=$CROSSTOOL-as \\</b><br>
-<b>export RANLIB=$CROSSTOOL-ranlib</b><br>
-<!--<b>export LINK=$CXX</b><br>-->
-
-##4. // check<br>
-<b>$CC --version</b><br>
-=> arm-linux-gnueabi-gcc (Ubuntu/Linaro 5.3.1-14ubuntu2) 5.3.1 20160413<br>
-<b>$CXX --version</b><br>
-=> arm-linux-gnueabi-g++ (Ubuntu/Linaro 5.3.1-14ubuntu2) 5.3.1 20160413<br>
-
-##5. // get source (3.0)<br>
-git clone - b 3.0 --single-branch --depth 1 git://github.com/arangodb/arangodb.git</b><br>
-
-##6. // SSL für ARM-Platform compilieren<br>
-6.1 // Source holen<br>
-<b>cd ./3rdParty</b><br>
-<b>mkdir openssl</b><br>
-<b>cd openssl</b><br>
-<b>wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz</b><br>
-<b>tar xzf openssl-1.0.2h.tar.gz</b><br>
-
-6.2 // Umgebung für Cross-Comiling  anpassen<br>
-s. Punkt <b>3</b><br>
-
-6.3. // SSL für ARM configurieren<br>
-<b>cd openssl-1.0.2h</b><br>
-<b>./Configure linux-armv4 --openssldir=/opt/gnuarm</b><br>
-
-6.4. // SSL Kompilieren und installieren<br>
-<b>make -j4</b><br>
-//SSL -> /opt/gnuarm <br>
-<b>make install</b><br> 
-
-6.5.// zurück in ArangoDB<br>
-cd .. // openssl<br>
-cd .. // 3rdParty<br>
-cd .. // ArangoDB<br>
-
-##7. //build<br>
-<b>mkdir -p build</b><br>
-<b>cd build</b><br>
-
-<b>cmake ..\\</b><br>
-<b>-DCROSS_COMPILING=true \\</b><br>
-<b>-DOPENSSL_ROOT_DIR=/opt/gnuarm \\</b><br>
-<b>-DCMAKE_TARGET_ARCHITECTURES=armv7</b><br>
-
-
-##8 Problem mit -m32 und -m64 Schalter
-Wärend bei nativen Komilierung auf Wandboard tretten keine Feheler auf, <br>
-schlägt die Cross-Komilirung an dem o.g. Compiler-Schlater fehl.<br>
-(Für arm-linux-gnueabihf-g++ Compiler/Linker unbekannt). <br>
-Das Problem tritt nur mit ICU-Modul (Bestandteit V8) auf unter:<br> 
-<b>arangodb/3rdParty/V8/V8-5.0.71.39/third_party/icu</b><br>
-Es liegt wohl daran, dass die Erkennung des Plattforms bei Cross-Comilier (noch) nicht perfekt ist.
-
+Weitere Infos unter: https://github.com/servusoft/arangodb3/blob/master/README_CROSS_COMPILING.md
