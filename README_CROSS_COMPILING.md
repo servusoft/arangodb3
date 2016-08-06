@@ -81,7 +81,7 @@ Die Schritte sind:<br>
 <b>mkdir -p A64</b> - für ARMv8 Architerktur<br>
 <b>cd A64</b><br>
 <b>cmake .. -DCROSS_COMPILING=true -DOPENSSL_ROOT_DIR=/opt/gnuarm-64</b><br>
-Anschliessend wird <b>make -j4</b> (Anzahl der verfügbaren Kernen bei für die Kompilierung)
+Anschliessend wird <b>make -j4</b> ausgeführt. (4=Anzahl der verfügbaren Kernen bei für die Kompilierung)<br>
 Als Ergebnis der Kompilirung stehen die Dateien in dem ./Axx/bin/ Verzeichnis parat.
 ##5. Vorbereitung zum Testen auf einem ARM-Board
 Damit das ArangoDB auf der jeweiligen Architektur getestet werden kann, sollte das Ergebnis in ein Packet gepackt werden.<br> 
