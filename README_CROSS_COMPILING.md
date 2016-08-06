@@ -36,7 +36,6 @@ Entsprechend installierte ARMv8 Version:<br>
 Und die entpackte ARMv8 Variante:<br>
 <b>export TOOL_PREFIX=/mnt/sda4/_LINARO/gcc-linaro-5.3-2016.02-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu</b><br>
 Weitere Definitionen sind:<br>
-<code>
 <b>export CXX=$TOOL_PREFIX-g++</b><br>
 <b>export AR=$TOOL_PREFIX-ar</b><br>
 <b>export RANLIB=$TOOL_PREFIX-ranlib</b><br>
@@ -44,7 +43,6 @@ Weitere Definitionen sind:<br>
 <b>export LD=$TOOL_PREFIX-g++</b><br>
 <b>export LINK=$TOOL_PREFIX-g++</b><br>
 <b>export STRIP=$TOOL_PREFIX-strip</b><br>
-</code>
 ##3. Kompilirtung der SSL
 ArangoDB verwendet OpenSSL, was aber nicht im Quellcode enhalten ist. 
 Dafür müsste SSL Packen separat heruntergeladen und installiert werden.
