@@ -18,7 +18,7 @@ Für ARMv7 wird <b>arm-linux-gnueabihf</b> Compiler verwendet, der unter dem Lin
 https://releases.linaro.org/components/toolchain/binaries/latest-5/arm-linux-gnueabihf/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf.tar.xz<br>
 Für ARMv8 ist <b>aarch64-linux-gnu</b> erforderlich: <br>
 https://releases.linaro.org/components/toolchain/binaries/latest-5/aarch64-linux-gnu/gcc-linaro-5.3-2016.02-x86_64_aarch64-linux-gnu.tar.xz<br>
-Das Herunterladen kann mit <b>wget (Dateiname)</b> erfolgen. Die heruntergeladen Dateien sollten in ein Verzeichniss abgelegt werden, wo die entpackt und dann verwenden werden können. 
+Das Herunterladen kann mit <b>wget (Dateiname)</b> erfolgen. Die heruntergeladen Dateien sollten in ein Verzeichnis abgelegt werden, wo die entpackt und dann verwenden werden können. 
 Für die Einrichtung des Compiler sind absolute Pfade erforderlich, so nehmen wir an, dass die Dateien unter<br> 
 <b>/mnt/sda4/_LINARAO</b> gespeichert werden. Die gepackte Dateien können mit <b>tar xpvf (Dateiname)</b> entpackt werden.
 
@@ -81,6 +81,7 @@ Die Schritte sind:<br>
 <b>mkdir -p A64</b> - für ARMv8 Architerktur<br>
 <b>cd A64</b><br>
 <b>cmake .. -DCROSS_COMPILING=true -DOPENSSL_ROOT_DIR=/opt/gnuarm-64</b><br>
+Anschliessend wird <b>make -j4</b> (Anzahl der verfügbaren Kernen bei für die Kompilierung)
 Als Ergebnis der Kompilirung stehen die Dateien in dem ./Axx/bin/ Verzeichnis parat.
 ##5. Vorbereitung zum Testen auf einem ARM-Board
 Damit das ArangoDB auf der jeweiligen Architektur getestet werden kann, sollte das Ergebnis in ein Packet gepackt werden.<br> 
