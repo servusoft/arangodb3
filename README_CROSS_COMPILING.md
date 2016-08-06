@@ -28,8 +28,8 @@ Die namen werden so gesetzt, damit die Einrichtung des Umgebungsvariablen verein
 So wird eine Basis-Variable definiert, die für weitere Definitionen verwendet wird.<br>
 Einrichtung der Basis-Variable für folgende Architerktugen erfolgt so:<br>
 Für die installierte ARMv7 Version es ist:<br>
-<b>export TOOL_PREFIX=arm-linux-gnueabihf</b>
-Für die entpackte ARMv7 Variante:<br></b>
+<b>export TOOL_PREFIX=arm-linux-gnueabihf</b><br>
+Für die entpackte ARMv7 Variante:<br>
 <b>export TOOL_PREFIX=/mnt/sda4/_LINARO/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf</b><br>
 Entsprechend installierte ARMv8 Version:<br>
 <b>export TOOL_PREFIX=aarch64-linux-gnu</b><br>
