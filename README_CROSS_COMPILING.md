@@ -53,8 +53,8 @@ Die Schritte für ARMv7 sehen dann so aus (Unterstellt in /mnt/sda4/_SSL gespeic
 <b>cd /mnt//sda4/_SSL/openssl-armv7</b><br>
 <b>wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz</b><br>
 <b>tar xzf openssl-1.0.2h.tar.gz</b><br>
-Für ARMv8 wird es in <b>/mnt//sda4/_SSL/openssl-armv8</b> abgelegt.
-Es auch die aktuelle GIT-Version geklont werden:<br>
+Für ARMv8 wird es in <b>/mnt//sda4/_SSL/openssl-armv8</b> abgelegt.<br>
+Es kann auch die aktuelle GIT-Version geklont werden:<br>
 Das Klonen und die Kompilirung für jeweilige Versionen:<br>
 ARMv7:<br>
 <b>git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable  git://github.com/openssl/openssl ./openssl/arm-hf</b><br>
