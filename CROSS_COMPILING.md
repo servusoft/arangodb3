@@ -41,17 +41,17 @@ __/mnt/sda4/_LINARAO__ be saved. The compressed files can be decompressed with _
 ##2. Preparation of the environment variables<br>
 
 It is necessary to compile several Tools I, which is suitable for a particular architecture. The variable-names are set, thus setting up the environment variables is simplified. As a base variable is defined that is used for other definitions.<br>
-Means the basic variable for the following Architerktugen done so:<br>
-For the installed ARMv7 it is:<br>
+Means the basic variable for the following architectures done so:<br>
+For the _installed ARMv7_ it is:<br>
 _export TOOL_PREFIX=arm-linux-gnueabihf_<br>
-For the unpacked ARMv7 version:<br>
+For the _unpacked ARMv7_ version:<br>
 _export TOOL_PREFIX=/mnt/sda4/_LINARO/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf_<br>
-According installed ARMv8:<br>
+According _installed ARMv8_:<br>
 _export TOOL_PREFIX=aarch64-linux-gnu_<br>
-And the unpacked ARMv8 version:<br>
+And the _unpacked ARMv8_ version:<br>
 _export TOOL_PREFIX=/mnt/sda4/_LINARO/gcc-linaro-5.3-2016.02-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu_<br>
 
-Other definitions are:<br>
+The other definitions are:<br>
 _export CXX=$TOOL_PREFIX-g++_<br>
 _export AR=$TOOL_PREFIX-ar_<br>
 _export RANLIB=$TOOL_PREFIX-ranlib_<br>
