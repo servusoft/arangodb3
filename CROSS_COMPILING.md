@@ -65,45 +65,22 @@ _export STRIP=$TOOL_PREFIX-strip_<br>
 ArangoDB uses OpenSSL, but this is not included in the source code. For SSL takes packs are downloaded and installed separately. 
 It is appropriate to require the installation once per architecture (with installed or unpacked version of the compiler). 
 To compile the appropriate environment variables should be set. A separate directory should be used for each architecture.<br>
-
-The steps for ARMv7 look like this (Assuming in __/mnt/sda4/_SSL/__ stored):<br>
-<i>mkdir /mnt/sda4/_SSL/openssl-armv7</i> <br>
-<i>cd /mnt/sda4/_SSL/openssl-armv7</i> <br>
-_wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz_<br>
-_tar xzf openssl-1.0.2h.tar.gz_<br>
-_cd openssl-1.0.2h_
-_./Configure linux-armv4 --openssldir=/opt/gnuarm-hf_<br>
-_make -j4_<br>
-_make install_<br>
-
-For ARMv8 it is stored in __/mnt/sda4/_SSL/openssl-armv8:__<br>
-<i>mkdir /mnt/sda4/_SSL/openssl-armv8</i> <br>
-<i>cd /mnt/sda4/_SSL/openssl-armv8</i> <br>
-_wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz_<br>
-_tar xzf openssl-1.0.2h.tar.gz_<br>
-_cd openssl-1.0.2h_
-_./Configure linux-aarch64 --openssldir=/opt/gnuarm-64_<br>
-_make -j4_<br>
-_make install_<br>
-
-It can also be the latest GIT version can be cloned. The Cloning and Compilation for respective versions:<br>
+It can be the latest GIT version of the OpenSSL cloned. The Cloning and Compilation for respective versions:<br>
 __ARMv7__:<br>
-_git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-hf_<br>
+<i>git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-hf</i><br>
 _cd ./openssl/arm-hf_<br>
 _./Configure linux-armv4 --openssldir=/opt/gnuarm-hf_<br>
 _make -j4_<br>
 _make install_<br>
 
 __ARMv8__:<br>
-_git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-64_<br>
+<i>git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-64</i><br>
 _cd ./openssl/arm-64_<br>
 _./Configure linux-aarch64 --openssldir=/opt/gnuarm-64_<br>
 _make -j4_<br>
 _make install_<br>
-The unpacked versions could be similarly compiled.
 
 ##4. Compilation of ArangoDB
-
 First ArangoDB should be cloned using GIT:<br>
 _git clone git://github.com/arangodb/arangodb.git_ - current devel branch<br>
 _git clone -b 3.0 git://github.com/arangodb/arangodb.git_ - the current 3.0 release branch<br>
