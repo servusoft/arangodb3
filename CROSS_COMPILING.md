@@ -67,14 +67,14 @@ It is appropriate to require the installation once per architecture (with instal
 To compile the appropriate environment variables should be set. A separate directory should be used for each architecture.<br>
 It can be the latest GIT version of the OpenSSL cloned. The Cloning and Compilation for respective versions:<br>
 __ARMv7__:<br>
-<i>git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-hf</i><br>
+*git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-hf*<br>
 _cd ./openssl/arm-hf_<br>
 _./Configure linux-armv4 --openssldir=/opt/gnuarm-hf_<br>
 _make -j4_<br>
 _make install_<br>
 
 __ARMv8__:<br>
-<i>git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-64</i><br>
+*git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-64</i>*
 _cd ./openssl/arm-64_<br>
 _./Configure linux-aarch64 --openssldir=/opt/gnuarm-64_<br>
 _make -j4_<br>
