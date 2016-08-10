@@ -67,7 +67,7 @@ It is appropriate to require the installation once per architecture (with instal
 To compile the appropriate environment variables should be set. A separate directory should be used for each architecture.<br>
 
 The steps for ARMv7 look like this (Assuming in /mnt/sda4/_SSL stored):<br>
-_mkdir /mnt/sda4/_SSL/openssl-armv7_ <br>
+<i>mkdir /mnt/sda4/_SSL/openssl-armv7</i> <br>
 _cd /mnt/sda4/_SSL/openssl-armv7_ <br>
 _wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz_<br>
 _tar xzf openssl-1.0.2h.tar.gz_<br>
