@@ -87,11 +87,11 @@ _git clone -b 3.0 git://github.com/arangodb/arangodb.git_ - the current 3.0 rele
 
 The compilation of ArangoDB not significantly different, except for the adjustment of CMake variables that vary per architecture.<br>
 The steps are<br>
-_mkdir -p A32_ - for ARMv7 architecture:<br>
+_mkdir -p A32_ - for __ARMv7 architecture__:<br>
 _cd A32_<br>
 _cmake .. -DCROSS_COMPILING=true -DOPENSSL_ROOT_DIR=/opt/gnuarm-hf_<br>
 
-_mkdir -p A64_ - for ARMv8 architecture:<br>
+_mkdir -p A64_ - for __ARMv8 architecture__:<br>
 _cd A64_<br>
 _cmake .. -DCROSS_COMPILING=true -DOPENSSL_ROOT_DIR=/opt/gnuarm-64_<br>
 
