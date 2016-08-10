@@ -27,9 +27,9 @@ _apt-get install g++-arm-linux-gnueabihf_ - for ARMv7 (32-bit) architectures<br>
 _apt-get install g++-aarch64-linux-gnu_ - for ARMv8 (64-bit) architectures<br>
 
 Without installing the following packages should be downloaded:<br>
-- For ARMv7 arm-linux-gnueabihf compiler is used, which can be downloaded at the link:<br>
+- For ARMv7 _arm-linux-gnueabihf_ compiler is used, which can be downloaded at the link:<br>
 https://releases.linaro.org/components/toolchain/binaries/latest-5/arm-linux-gnueabihf/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf.tar.xz<br>
-- For ARMv8 'aarch64-linux-gnu' is required:<br>
+- For ARMv8 _aarch64-linux-gnu_ is required:<br>
 https://releases.linaro.org/components/toolchain/binaries/latest-5/aarch64-linux-gnu/gcc-linaro-5.3-2016.02-x86_64_aarch64-linux-gnu.tar.xz<br>
 
 The latest compiler (5.x) support the latest versions of Ubuntu and Debian. Should ArangoDB run on an older version of the operating system, as an earlier version of the compiler is required. The gcc version 4.9 can be found under the link:<br>
