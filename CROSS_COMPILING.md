@@ -66,15 +66,27 @@ ArangoDB uses OpenSSL, but this is not included in the source code. For SSL take
 It is appropriate to require the installation once per architecture (with installed or unpacked version of the compiler). 
 To compile the appropriate environment variables should be set. A separate directory should be used for each architecture.<br>
 
-The steps for ARMv7 look like this (Assuming in /mnt/sda4/_SSL stored):<br>
+The steps for ARMv7 look like this (Assuming in __/mnt/sda4/_SSL/__ stored):<br>
 <i>mkdir /mnt/sda4/_SSL/openssl-armv7</i> <br>
-_cd /mnt/sda4/_SSL/openssl-armv7_ <br>
+<i>cd /mnt/sda4/_SSL/openssl-armv7</i> <br>
 _wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz_<br>
 _tar xzf openssl-1.0.2h.tar.gz_<br>
-For ARMv8 it is stored in __/mnt//sda4/_SSL/openssl-armv8__<br>
+_cd openssl-1.0.2h_
+_./Configure linux-armv4 --openssldir=/opt/gnuarm-hf_<br>
+_make -j4_<br>
+_make install_<br>
+
+For ARMv8 it is stored in __/mnt/sda4/_SSL/openssl-armv8:__<br>
+<i>mkdir /mnt/sda4/_SSL/openssl-armv8</i> <br>
+<i>cd /mnt/sda4/_SSL/openssl-armv8</i> <br>
+_wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz_<br>
+_tar xzf openssl-1.0.2h.tar.gz_<br>
+_cd openssl-1.0.2h_
+_./Configure linux-aarch64 --openssldir=/opt/gnuarm-64_<br>
+_make -j4_<br>
+_make install_<br>
 
 It can also be the latest GIT version can be cloned. The Cloning and Compilation for respective versions:<br>
-
 __ARMv7__:<br>
 _git clone --single-branch --depth 1 -b OpenSSL_1_0_2-stable git://github.com/openssl/openssl ./openssl/arm-hf_<br>
 _cd ./openssl/arm-hf_<br>
@@ -93,8 +105,8 @@ The unpacked versions could be similarly compiled.
 ##4. Compilation of ArangoDB
 
 First ArangoDB should be cloned using GIT:<br>
-_git clone git: //github.com/arangodb/arangodb.git_ - current devel branch<br>
-_git clone git -b 3.0: //github.com/arangodb/arangodb.git_ - the current 3.0 release branch<br>
+_git clone git://github.com/arangodb/arangodb.git_ - current devel branch<br>
+_git clone -b 3.0 git://github.com/arangodb/arangodb.git_ - the current 3.0 release branch<br>
 
 The compilation of ArangoDB not significantly different, except for the adjustment of CMake variables that vary per architecture.<br>
 The steps are<br>
@@ -108,6 +120,12 @@ _cmake .. -DCROSS_COMPILING=true -DOPENSSL_ROOT_DIR=/opt/gnuarm-64_<br>
 
 Finally, _make -j4_ runs. (4 = number of available cores in the compilation)<br>
 As a result of compiling the files are stored in the directory __./Axx/bin/__.
+
+##Note:
+In the compilation of the V8 an executable file is created (mksnapshot) that is running on the platform. 
+When cross compiling this file can not be executed because the processor architecture differs (ARM) and the compilation is interrupted.
+Through a trick it can override. The make-option __-i__ ignores the error and ArangoDB is created;
+_make -i -j4_
 
 ##5. Preparation for testing on an ARM board
 
