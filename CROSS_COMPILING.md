@@ -99,10 +99,10 @@ Finally, _make -j4_ runs. (4 = number of available cores in the compilation)<br>
 As a result of compiling the files are stored in the directory __./Axx/bin/__.
 
 ###Note:
-In the compilation of the V8 an executable file is created (mksnapshot) that is running on the platform. 
+During compilation of the V8 is an executable file created (mksnapshot) that is running on the platform. 
 When cross compiling this file can not be executed because the processor architecture differs (ARM) and the compilation is interrupted.
-Through a trick it can override. The make-option __-i__ ignores the error and ArangoDB is created;
-_make -i -j4_
+Through a trick it can override. <br>The make option __-i__ ignores the error and ArangoDB is created:<br>
+__make -i -j4__
 
 ##5. Preparation for testing on an ARM board
 
