@@ -1,6 +1,9 @@
 #Cross-Compiling ArangoDB
 
+
 __Problem__
+
+DEPRICATED: TO BUILD FOR ARM USE PLEASE https://github.com/arangodb-helper/build-docker-containers
 
 To use ArangoDB on their ARM Board, but compiling on their x64 computer.<br>
 
