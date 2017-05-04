@@ -1,3 +1,5 @@
+DEPRICATED: TO BUILD FOR ARM USE PLEASE https://github.com/arangodb-helper/build-docker-containers
+
 # Inhalt
 1. Einrichtung eines Cross-Compilers
 2. Vorbereitung der Umgebungsvariablen
