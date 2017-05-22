@@ -1,4 +1,4 @@
-DEPRICATED: TO BUILD FOR ARM USE PLEASE https://github.com/arangodb-helper/build-docker-containers
+DEPRICATED: TO BUILD FOR ARM PLEASE USE https://github.com/arangodb-helper/build-docker-containers
 
 #Build ArangoDB auf Wandboard
 Wandboard kann über <http://wandboard.org/index.php/buy> bestellt werden.<br>
