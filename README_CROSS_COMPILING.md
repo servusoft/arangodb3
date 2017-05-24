@@ -1,4 +1,6 @@
-DEPRICATED: TO BUILD FOR ARM USE PLEASE https://github.com/arangodb-helper/build-docker-containers
+DEPRICATED: TO BUILD FOR ARM PLEASE USE <br>
+https://github.com/arangodb-helper/build-docker-containers/blob/master/readme_ARM.md
+
 
 # Inhalt
 1. Einrichtung eines Cross-Compilers
