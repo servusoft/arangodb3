@@ -3,7 +3,8 @@
 
 __Problem__
 
-DEPRICATED: TO BUILD FOR ARM USE PLEASE https://github.com/arangodb-helper/build-docker-containers
+DEPRICATED: TO BUILD FOR ARM PLEASE USE <br>
+https://github.com/arangodb-helper/build-docker-containers/blob/master/readme_ARM.md
 
 To use ArangoDB on their ARM Board, but compiling on their x64 computer.<br>
 
